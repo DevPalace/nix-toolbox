@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "image-config": {
+    "User": "test",
+    "ExposedPorts": {
+      "8080/tcp": {}
+    },
+    "Env": [
+      "TEST=abc"
+    ],
+    "Entrypoint": [
+      "/bin/whatever"
+    ],
+    "Cmd": [
+      "-a",
+      "-b",
+      "-c"
+    ],
+    "WorkingDir": "/something",
+    "Labels": {
+      "testLabel": "test"
+    },
+    "StopSignal": "5"
+  },
+  "layers": null,
+  "arch": "amd64"
+}

@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "image-config": {
+    "WorkingDir": "/"
+  },
+  "layers": null,
+  "arch": "amd64"
+}

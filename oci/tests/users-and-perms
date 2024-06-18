@@ -1,0 +1,52 @@
+
+ROOT:
+[4mOctal[0m [4mPermissions[0m [4mSize[0m [4mUser[0m [4mGroup[0m [4mDate Modified[0m [4mName[0m
+[35m0755[0m  .[1;33mr[31mw[4;32mx[0m[33mr[1;90m-[0m[32mx[33mr[1;90m-[0m[32mx[0m     [32m0[0m [1;33mroot[0m [1;33mroot[0m  [34m [0m             [1;32m.dockerenv[0m
+[35m0555[0m  [1;34md[33mr[90m-[32mx[0m[33mr[1;90m-[0m[32mx[33mr[1;90m-[0m[32mx[0m     [1;90m-[0m [1;33mroot[0m [1;33mroot[0m  [34m [0m             [1;34mbin[0m
+[35m0755[0m  [1;34md[33mr[31mw[32mx[0m[33mr[1;90m-[0m[32mx[33mr[1;90m-[0m[32mx[0m     [1;90m-[0m [1;33mroot[0m [1;33mroot[0m  [34m [0m             [1;4;34mdev[0m
+[35m0555[0m  [1;34md[33mr[90m-[32mx[0m[33mr[1;90m-[0m[32mx[33mr[1;90m-[0m[32mx[0m     [1;90m-[0m [1;33mroot[0m [1;33mroot[0m  [34m [0m             [1;34metc[0m
+[35m0555[0m  [1;34md[33mr[90m-[32mx[0m[33mr[1;90m-[0m[32mx[33mr[1;90m-[0m[32mx[0m     [1;90m-[0m [1;33mroot[0m [1;33mroot[0m  [34m [0m             [1;34mhome[0m
+[35m0755[0m  [1;34md[33mr[31mw[32mx[0m[33mr[1;90m-[0m[32mx[33mr[1;90m-[0m[32mx[0m     [1;90m-[0m [1;33mroot[0m [1;33mroot[0m  [34m [0m             [1;34mnix[0m
+[35m0555[0m  [1;34md[33mr[90m-[32mx[0m[33mr[1;90m-[0m[32mx[33mr[1;90m-[0m[32mx[0m     [1;90m-[0m [1;33mroot[0m [1;33mroot[0m  [34m [0m             [1;4;34mproc[0m
+[35m0744[0m  [1;34md[33mr[31mw[32mx[0m[33mr[1;90m--[0m[33mr[1;90m--[0m     [1;90m-[0m [1;33mroot[0m [1;33mroot[0m  [34m [0m             [1;34mroot[0m
+[35m0555[0m  [1;34md[33mr[90m-[32mx[0m[33mr[1;90m-[0m[32mx[33mr[1;90m-[0m[32mx[0m     [1;90m-[0m [1;33mroot[0m [1;33mroot[0m  [34m [0m             [1;34msomething[0m
+[35m0555[0m  [1;34md[33mr[90m-[32mx[0m[33mr[1;90m-[0m[32mx[33mr[1;90m-[0m[32mx[0m     [1;90m-[0m [1;33mroot[0m [1;33mroot[0m  [34m [0m             [1;4;34msys[0m
+[35m1777[0m  [1;34md[33mr[31mw[32mx[0m[33mr[31mw[32mx[33mr[31mw[35mt[0m     [1;90m-[0m [1;33mroot[0m [1;33mroot[0m  [34m [0m             [1;34mtmp[0m
+
+ETC:
+[4mOctal[0m [4mPermissions[0m [4mSize[0m [4mUser[0m [4mGroup[0m [4mDate Modified[0m [4mName[0m
+[35m0444[0m  .[1;33mr[90m--[0m[33mr[1;90m--[0m[33mr[1;90m--[0m    [32m24[0m [1;33mroot[0m [1;33mroot[0m  [34m [0m             group
+[35m0440[0m  .[1;33mr[90m--[0m[33mr[1;90m-----[0m    [32m19[0m [1;33mroot[0m [1;33mroot[0m  [34m [0m             gshadow
+[35m0644[0m  .[1;33mr[31mw[90m-[0m[33mr[1;90m--[0m[33mr[1;90m--[0m    [32m16[0m [1;33mroot[0m [1;33mroot[0m  [34m [0m             hostname
+[35m0644[0m  .[1;33mr[31mw[90m-[0m[33mr[1;90m--[0m[33mr[1;90m--[0m   [32m177[0m [1;33mroot[0m [1;33mroot[0m  [34m [0m             hosts
+[35m0777[0m  [36ml[1;33mr[31mw[32mx[0m[33mr[31mw[32mx[33mr[31mw[32mx[0m     [1;90m-[0m [1;33mroot[0m [1;33mroot[0m  [34m [0m             [36mmtab[0m [1;90m->[0m [36m/proc/[0mmounts
+[35m0444[0m  .[1;33mr[90m--[0m[33mr[1;90m--[0m[33mr[1;90m--[0m    [32m60[0m [1;33mroot[0m [1;33mroot[0m  [34m [0m             passwd
+[35m0644[0m  .[1;33mr[31mw[90m-[0m[33mr[1;90m--[0m[33mr[1;90m--[0m   [32m963[0m [1;33mroot[0m [1;33mroot[0m  [34m [0m             resolv.conf
+[35m0440[0m  .[1;33mr[90m--[0m[33mr[1;90m-----[0m    [32m31[0m [1;33mroot[0m [1;33mroot[0m  [34m [0m             shadow
+
+SOMETHING:
+[4mOctal[0m [4mPermissions[0m [4mSize[0m [4mUser[0m  [4mGroup[0m [4mDate Modified[0m [4mName[0m
+[35m0555[0m  [1;34md[33mr[90m-[32mx[0m[33mr[1;90m-[0m[32mx[33mr[1;90m-[0m[32mx[0m     [1;90m-[0m [1;33mroot[0m  [1;33mroot[0m  [34m [0m             [1;34mabc[0m
+[35m0777[0m  [36ml[1;33mr[31mw[32mx[0m[33mr[31mw[32mx[33mr[31mw[32mx[0m     [1;90m-[0m [1;33mroot[0m  [1;33mroot[0m  [34m [0m             [36mtest1[0m [1;90m->[0m [36m/nix/store/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-file-something-test1
+[35m0777[0m  .[1;33mr[31mw[4;32mx[0m[33mr[31mw[32mx[33mr[31mw[32mx[0m    [32m11[0m test2 test2 [34m [0m             [1;32mtest2[0m
+[35m0666[0m  .[1;33mr[31mw[90m-[0m[33mr[31mw[1;90m-[0m[33mr[31mw[1;90m-[0m    [32m11[0m 1001  1001  [34m [0m             test3
+
+HOME:
+[4mOctal[0m [4mPermissions[0m [4mSize[0m [4mUser[0m  [4mGroup[0m [4mDate Modified[0m [4mName[0m
+[35m0744[0m  [1;34md[33mr[31mw[32mx[0m[33mr[1;90m--[0m[33mr[1;90m--[0m     [1;90m-[0m test2 test2 [34m [0m             [1;34mtest2[0m
+
+SHADOW:
+root:!x:::::::
+test2:!x:::::::
+
+PASSWD:
+root:x:0:0::/root:/bin/bash
+test2:x:1000:1000::/home/test2:
+
+GROUP:
+root:x:0:
+test2:x:1000:
+
+GSHADOW:
+root:x::
+test2:x::
