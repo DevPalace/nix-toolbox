@@ -1,81 +1,88 @@
-{ pkgs, lib ? pkgs.lib, builder }:
+{
+  pkgs,
+  lib ? pkgs.lib,
+  builder,
+}:
 let
   ls = "${lib.getExe pkgs.eza} -glahF --octal-permissions --time-style '+ ' --color=always";
 
-
-  diffLayersJson = name: oci: pkgs.runCommandLocal "${name}-test" { } ''
-    mkdir $out
-    cat ${oci} | ${lib.getExe pkgs.jq} > $out/result.json
-    diff ${./${name}.json} $out/result.json
-  '';
+  diffLayersJson =
+    name: oci:
+    pkgs.runCommandLocal "${name}-test" { } ''
+      mkdir $out
+      cat ${oci} | ${lib.getExe pkgs.jq} > $out/result.json
+      diff ${./${name}.json} $out/result.json
+    '';
 
   compareOutput =
-    { image
-    , compareWith
-    , test
-    ,
+    {
+      image,
+      compareWith,
+      test,
     }:
     let
-      image' = builder (image
-        // {
-        entrypoint = [
-          (pkgs.writeShellScript "entrypoint" test)
-        ];
-      });
+      image' = builder (image // { entrypoint = [ (pkgs.writeShellScript "entrypoint" test) ]; });
     in
     pkgs.runCommandLocal "${image.name}-compare-output-test"
       {
-        passthru = { inherit image; };
-      } ''
-      mkdir -p $out
-      export PATH=$PATH:${lib.makeBinPath [pkgs.docker]}
-      ${image'.load}/bin/load
-      docker run -h ${image'.name} ${image'.imageRefUnsafe} > $out/result
-      sed --regexp-extended 's|/nix/store/(.{36})-|/nix/store/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-|g' -i $out/result
-      cp $out/result result
+        passthru = {
+          inherit image;
+        };
+      }
+      ''
+        mkdir -p $out
+        export PATH=$PATH:${lib.makeBinPath [ pkgs.docker ]}
+        ${image'.load}/bin/load
+        docker run -h ${image'.name} ${image'.imageRefUnsafe} > $out/result
+        sed --regexp-extended 's|/nix/store/(.{36})-|/nix/store/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-|g' -i $out/result
+        cp $out/result result
 
-      diff ${compareWith} $out/result || ret=$?
-      if [ $ret -ne 0 ];
-      then
-        echo -e "\e[33mActual output:\e[0m\n"
-        cat $out/result
-        echo
-        echo -e "\e[31mError: test failed\e[0m\n"
-        exit $ret
-      else
-        echo -e "\n\e[32mTest passed\e[0m"
-      fi
-    '';
+        diff ${compareWith} $out/result || ret=$?
+        if [ $ret -ne 0 ];
+        then
+          echo -e "\e[33mActual output:\e[0m\n"
+          cat $out/result
+          echo
+          echo -e "\e[31mError: test failed\e[0m\n"
+          exit $ret
+        else
+          echo -e "\n\e[32mTest passed\e[0m"
+        fi
+      '';
 in
 {
-  empty = diffLayersJson "empty" (
-    builder {
-      name = "empty";
-    }
-  );
+  empty = diffLayersJson "empty" (builder {
+    name = "empty";
+  });
 
-  config = diffLayersJson "config" (
-    builder {
-      name = "config";
-      user = "test";
-      exposedPorts = {
-        "8080/tcp" = { };
-      };
-      env.TEST = "abc";
-      entrypoint = [ "/bin/whatever" ];
-      cmd = [ "-a" "-b" "-c" ];
-      workingDir = "/something";
-      labels = {
-        testLabel = "test";
-      };
-      stopSignal = "5";
-    }
-  );
+  config = diffLayersJson "config" (builder {
+    name = "config";
+    user = "test";
+    exposedPorts = {
+      "8080/tcp" = { };
+    };
+    env.TEST = "abc";
+    entrypoint = [ "/bin/whatever" ];
+    cmd = [
+      "-a"
+      "-b"
+      "-c"
+    ];
+    workingDir = "/something";
+    labels = {
+      testLabel = "test";
+    };
+    stopSignal = "5";
+  });
 
   usersAndPerms = compareOutput {
     image = {
       name = "users-and-perms";
-      packages = with pkgs; [ bash eza coreutils ];
+      packages = with pkgs; [
+        bash
+        eza
+        coreutils
+      ];
 
       users.root = {
         uid = 0;
@@ -108,7 +115,6 @@ in
         uid = 1001;
         gid = 1001;
       };
-
     };
 
     test = ''
@@ -135,7 +141,5 @@ in
     '';
 
     compareWith = ./users-and-perms;
-
   };
-
 }

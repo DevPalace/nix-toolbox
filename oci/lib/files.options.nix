@@ -1,9 +1,39 @@
-{ pkgs, n2c, config, lib, ... }:
-
+{
+  pkgs,
+  n2c,
+  config,
+  lib,
+  ...
+}:
 
 let
-  inherit (lib) attrNames mkOption types literalExample concatMapStringsSep escapeShellArgs filter attrValues literalExpression mkIf mkDerivedConfig mkDefault mapAttrsToList;
-  inherit (lib.types) str nullOr attrs attrsOf listOf bool either int package submodule;
+  inherit (lib)
+    attrNames
+    mkOption
+    types
+    literalExample
+    concatMapStringsSep
+    escapeShellArgs
+    filter
+    attrValues
+    literalExpression
+    mkIf
+    mkDerivedConfig
+    mkDefault
+    mapAttrsToList
+    ;
+  inherit (lib.types)
+    str
+    nullOr
+    attrs
+    attrsOf
+    listOf
+    bool
+    either
+    int
+    package
+    submodule
+    ;
 in
 {
   options = {
@@ -104,7 +134,6 @@ in
                 '';
               };
             });
-
           };
         };
       });
@@ -118,59 +147,66 @@ in
         }
       '';
 
-      type = with types; attrsOf (submodule (
-        { name, config, options, ... }:
-        {
-          options = {
+      type =
+        with types;
+        attrsOf (
+          submodule (
+            {
+              name,
+              config,
+              options,
+              ...
+            }:
+            {
+              options = {
 
-            enable = mkOption {
-              type = bool;
-              default = true;
-              description = ''
-                Whether this file should be generated. This option allows specific files to be disabled.
-              '';
-            };
+                enable = mkOption {
+                  type = bool;
+                  default = true;
+                  description = ''
+                    Whether this file should be generated. This option allows specific files to be disabled.
+                  '';
+                };
 
-            target = mkOption {
-              type = types.str;
-              description = ''
-                Directory name. Defaults to the attribute name.
-              '';
-            };
+                target = mkOption {
+                  type = types.str;
+                  description = ''
+                    Directory name. Defaults to the attribute name.
+                  '';
+                };
 
-            mode = mkOption {
-              type = types.str;
-              default = "symlink";
-              example = "0600";
-              description = ''
-                If set to something else than `symlink`, the file is copied instead of symlinked, with the given file mode.
-              '';
-            };
+                mode = mkOption {
+                  type = types.str;
+                  default = "symlink";
+                  example = "0600";
+                  description = ''
+                    If set to something else than `symlink`, the file is copied instead of symlinked, with the given file mode.
+                  '';
+                };
 
-            uid = mkOption {
-              default = 0;
-              type = types.int;
-              description = ''
-                UID of created file. Only takes effect when the file is copied (that is, the mode is not 'symlink').
-              '';
-            };
+                uid = mkOption {
+                  default = 0;
+                  type = types.int;
+                  description = ''
+                    UID of created file. Only takes effect when the file is copied (that is, the mode is not 'symlink').
+                  '';
+                };
 
-            gid = mkOption {
-              default = 0;
-              type = types.int;
-              description = ''
-                GID of created file. Only takes effect when the file is copied (that is, the mode is not 'symlink').
-              '';
-            };
-          };
+                gid = mkOption {
+                  default = 0;
+                  type = types.int;
+                  description = ''
+                    GID of created file. Only takes effect when the file is copied (that is, the mode is not 'symlink').
+                  '';
+                };
+              };
 
-          config = {
-            target = mkDefault name;
-          };
-
-        }
-      ));
-
+              config = {
+                target = mkDefault name;
+              };
+            }
+          )
+        );
     };
 
     files = mkOption {
@@ -185,74 +221,83 @@ in
         }
       '';
 
-      type = with types; attrsOf (submodule (
-        { name, config, options, ... }:
-        {
-          options = {
+      type =
+        with types;
+        attrsOf (
+          submodule (
+            {
+              name,
+              config,
+              options,
+              ...
+            }:
+            {
+              options = {
 
-            enable = mkOption {
-              type = bool;
-              default = true;
-              description = ''
-                Whether this file should be generated. This option allows specific files to be disabled.
-              '';
-            };
+                enable = mkOption {
+                  type = bool;
+                  default = true;
+                  description = ''
+                    Whether this file should be generated. This option allows specific files to be disabled.
+                  '';
+                };
 
-            target = mkOption {
-              type = types.str;
-              description = ''
-                Name of symlink. Defaults to the attribute name.
-              '';
-            };
+                target = mkOption {
+                  type = types.str;
+                  description = ''
+                    Name of symlink. Defaults to the attribute name.
+                  '';
+                };
 
-            text = mkOption {
-              default = null;
-              type = types.nullOr types.lines;
-              description = "Text of the file.";
-            };
+                text = mkOption {
+                  default = null;
+                  type = types.nullOr types.lines;
+                  description = "Text of the file.";
+                };
 
-            source = mkOption {
-              type = types.path;
-              description = "Path of the source file.";
-            };
+                source = mkOption {
+                  type = types.path;
+                  description = "Path of the source file.";
+                };
 
-            mode = mkOption {
-              type = types.str;
-              default = "symlink";
-              example = "0600";
-              description = ''
-                If set to something else than `symlink`, the file is copied instead of symlinked, with the given file mode.
-              '';
-            };
+                mode = mkOption {
+                  type = types.str;
+                  default = "symlink";
+                  example = "0600";
+                  description = ''
+                    If set to something else than `symlink`, the file is copied instead of symlinked, with the given file mode.
+                  '';
+                };
 
-            uid = mkOption {
-              default = 0;
-              type = types.int;
-              description = ''
-                UID of created file. Only takes effect when the file is copied (that is, the mode is not 'symlink').
-              '';
-            };
+                uid = mkOption {
+                  default = 0;
+                  type = types.int;
+                  description = ''
+                    UID of created file. Only takes effect when the file is copied (that is, the mode is not 'symlink').
+                  '';
+                };
 
-            gid = mkOption {
-              default = 0;
-              type = types.int;
-              description = ''
-                GID of created file. Only takes effect when the file is copied (that is, the mode is not 'symlink').
-              '';
-            };
-          };
+                gid = mkOption {
+                  default = 0;
+                  type = types.int;
+                  description = ''
+                    GID of created file. Only takes effect when the file is copied (that is, the mode is not 'symlink').
+                  '';
+                };
+              };
 
-          config = {
-            target = mkDefault name;
-            source = mkIf (config.text != null) (
-              let name' = "file-" + lib.replaceStrings [ "/" ] [ "-" ] name;
-              in mkDerivedConfig options.text (pkgs.writeText name')
-            );
-          };
-
-        }
-      ));
-
+              config = {
+                target = mkDefault name;
+                source = mkIf (config.text != null) (
+                  let
+                    name' = "file-" + lib.replaceStrings [ "/" ] [ "-" ] name;
+                  in
+                  mkDerivedConfig options.text (pkgs.writeText name')
+                );
+              };
+            }
+          )
+        );
     };
   };
 
@@ -262,10 +307,14 @@ in
       directories' = filter (f: f.enable) (attrValues config.directories);
       mkRun = isLocal: if isLocal then pkgs.runCommandLocal else pkgs.runCommand;
 
-      rootEnv = (pkgs.buildEnv {
-        name = "setup";
-        paths = (mapAttrsToList (n: v: if v.drv != null then v.drv else (mkRun v.local) n { } v.script) config.setup);
-      });
+      rootEnv = (
+        pkgs.buildEnv {
+          name = "setup";
+          paths = (
+            mapAttrsToList (n: v: if v.drv != null then v.drv else (mkRun v.local) n { } v.script) config.setup
+          );
+        }
+      );
 
       filesSetup = pkgs.runCommandLocal "files-setup" { } ''
         set -euo pipefail
@@ -303,35 +352,35 @@ in
         }
 
         mkdir -p "$out"
-        ${concatMapStringsSep "\n" (entry: escapeShellArgs [
-          "makeEntry"
-          # Force local source paths to be added to the store
-          "${entry.source}"
-          entry.target
-          entry.mode
-        ]) files'}
+        ${concatMapStringsSep "\n" (
+          entry:
+          escapeShellArgs [
+            "makeEntry"
+            # Force local source paths to be added to the store
+            "${entry.source}"
+            entry.target
+            entry.mode
+          ]
+        ) files'}
 
         ${concatMapStringsSep " " (entry: "mkdir -p \"$out/${entry.target}\"") directories'}
       '';
     in
     {
 
-      copyToRoot = lib.mkIf (config.setup != { })
-        [
-          rootEnv
-          filesSetup
-        ];
+      copyToRoot = lib.mkIf (config.setup != { }) [
+        rootEnv
+        filesSetup
+      ];
 
-      perms = map
-        (value: {
+      perms = map (
+        value:
+        {
           path = filesSetup;
           regex = if lib.hasPrefix "/" value.target then value.target else "/${value.target}";
           inherit (value) uid gid;
-        } // (lib.optionalAttrs (value.mode != "symlink") { inherit (value) mode; }))
-        (files' ++ directories');
-
-
-
+        }
+        // (lib.optionalAttrs (value.mode != "symlink") { inherit (value) mode; })
+      ) (files' ++ directories');
     };
-
 }

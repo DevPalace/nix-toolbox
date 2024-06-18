@@ -1,7 +1,23 @@
-{ pkgs, lib, config, n2c, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  n2c,
+  ...
+}:
 let
   inherit (lib) mkOption types literalExample;
-  inherit (lib.types) str nullOr attrs attrsOf listOf bool either int package;
+  inherit (lib.types)
+    str
+    nullOr
+    attrs
+    attrsOf
+    listOf
+    bool
+    either
+    int
+    package
+    ;
 in
 {
   options = {
@@ -66,7 +82,6 @@ in
         An image that is used as base image of this image.
       '';
     };
-
 
     nix = {
       initializeDatabase = mkOption {
@@ -180,22 +195,23 @@ in
       # This way, we should avoid redundant dependencies.
       foldImageLayers =
         let
-          mergeToLayer = priorLayers: component:
+          mergeToLayer =
+            priorLayers: component:
             assert builtins.isList priorLayers;
-            assert builtins.isAttrs component; let
-              layer = n2c.nix2container.buildLayer (component
-                // {
-                layers = priorLayers;
-              });
+            assert builtins.isAttrs component;
+            let
+              layer = n2c.nix2container.buildLayer (component // { layers = priorLayers; });
             in
             priorLayers ++ [ layer ];
         in
         layers: lib.foldl mergeToLayer [ ] layers;
 
-      tags = builtins.toFile "${config.name}-tags" (builtins.unsafeDiscardStringContext (builtins.concatStringsSep "\n" ([ config.tag ] ++ config.tags)));
+      tags = builtins.toFile "${config.name}-tags" (
+        builtins.unsafeDiscardStringContext (builtins.concatStringsSep "\n" ([ config.tag ] ++ config.tags))
+      );
 
       copyFn = ''
-        export PATH=$PATH:${lib.makeBinPath [n2c.skopeo-nix2container]}
+        export PATH=$PATH:${lib.makeBinPath [ n2c.skopeo-nix2container ]}
 
         copy() {
           local uri prev_tag
@@ -215,15 +231,21 @@ in
           done
         }
       '';
-
     in
     {
       tag = config.drv.imageTag;
-      passthru = { imageRefUnsafe = builtins.unsafeDiscardStringContext "${config.name}:${config.tag}"; }
-        // (lib.mapAttrs (n: pkgs.writeShellScriptBin n) config.actions);
+      passthru = {
+        imageRefUnsafe = builtins.unsafeDiscardStringContext "${config.name}:${config.tag}";
+      } // (lib.mapAttrs (n: pkgs.writeShellScriptBin n) config.actions);
 
       drv = n2c.nix2container.buildImage {
-        inherit (config) name copyToRoot fromImage maxLayers perms;
+        inherit (config)
+          name
+          copyToRoot
+          fromImage
+          maxLayers
+          perms
+          ;
 
         initializeNixDatabase = config.nix.initializeDatabase;
         nixUid = config.nix.uid;
@@ -237,14 +259,14 @@ in
           }
           // (lib.optionalAttrs (config.user != null) { User = config.user; })
           // (lib.optionalAttrs (config.exposedPorts != { }) { ExposedPorts = config.exposedPorts; })
-          // (lib.optionalAttrs (config.env != { }) { Env = lib.mapAttrsToList (n: v: "${n}=${v}") config.env; })
+          // (lib.optionalAttrs (config.env != { }) {
+            Env = lib.mapAttrsToList (n: v: "${n}=${v}") config.env;
+          })
           // (lib.optionalAttrs (config.entrypoint != [ ]) { Entrypoint = config.entrypoint; })
           // (lib.optionalAttrs (config.cmd != [ ]) { Cmd = config.cmd; })
           // (lib.optionalAttrs (config.volumes != { }) { Volumes = config.volumes; })
           // (lib.optionalAttrs (config.labels != { }) { Labels = config.labels; })
-          // (lib.optionalAttrs (config.stopSignal != null) { StopSignal = config.stopSignal; })
-        ;
-
+          // (lib.optionalAttrs (config.stopSignal != null) { StopSignal = config.stopSignal; });
       };
 
       actions.print-image = ''
