@@ -29,7 +29,6 @@ in
             };
 
             group = mkOption {
-              default = "+${toString config.gid}";
               type = types.str;
               description = ''
                 The user’s primary group.

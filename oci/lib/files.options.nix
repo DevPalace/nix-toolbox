@@ -119,19 +119,21 @@ in
               Permissions for the generated output
             '';
             type = nullOr (submodule {
-              regex = mkOption {
-                type = str;
-                example = ".*";
-                description = ''
-                  Path regex for which permisions should be set
-                '';
-              };
-              mode = mkOption {
-                type = nullOr str;
-                example = "0777";
-                description = ''
-                  File mode for paths matching the regex
-                '';
+              options = {
+                regex = mkOption {
+                  type = str;
+                  example = ".*";
+                  description = ''
+                    Path regex for which permisions should be set
+                  '';
+                };
+                mode = mkOption {
+                  type = nullOr str;
+                  example = "0777";
+                  description = ''
+                    File mode for paths matching the regex
+                  '';
+                };
               };
             });
           };

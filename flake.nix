@@ -16,6 +16,7 @@
       formatter.x86_64-linux = pkgs.nixfmt-rfc-style;
       bluprints.oci.builder = { pkgs }: import ./oci/lib/builder.nix { inherit pkgs n2c; };
 
+      legacyPackages.x86_64-linux.docs = import ./docs { inherit pkgs builder; };
       checks.x86_64-linux = import ./oci/tests { inherit pkgs builder; };
     };
 }

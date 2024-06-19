@@ -1,0 +1,6 @@
+[book]
+authors = ["Gytis Ivaskevicius"]
+language = "en"
+multilingual = false
+src = "src"
+title = "nix-toolbox"

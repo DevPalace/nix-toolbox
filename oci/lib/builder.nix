@@ -37,6 +37,6 @@ in
     tag
     tags
     ;
-  inherit (result) config;
+  inherit (result) config options;
 }
 // result.config.passthru
