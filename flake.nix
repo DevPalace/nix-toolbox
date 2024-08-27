@@ -1,22 +1,36 @@
 {
-  inputs.nix2container.url = "github:nlewo/nix2container";
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs";
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
+
+    nix2container.url = "github:nlewo/nix2container";
+    nix2container.inputs.nixpkgs.follows = "nixpkgs";
+  };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      nix2container,
-    }:
-    let
-      pkgs = import nixpkgs { system = "x86_64-linux"; };
-      n2c = nix2container.packages.x86_64-linux;
-      builder = import ./oci/lib/builder.nix { inherit pkgs n2c; };
-    in
-    {
-      formatter.x86_64-linux = pkgs.nixfmt-rfc-style;
-      bluprints.oci.builder = { pkgs }: import ./oci/lib/builder.nix { inherit pkgs n2c; };
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [
+        ./oci
+      ];
 
-      legacyPackages.x86_64-linux.docs = import ./docs { inherit pkgs builder; };
-      checks.x86_64-linux = import ./oci/tests { inherit pkgs builder; };
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
+
+      perSystem =
+        {
+          pkgs,
+          system,
+          ...
+        }:
+        {
+
+          formatter = pkgs.nixfmt-rfc-style;
+        };
     };
 }
