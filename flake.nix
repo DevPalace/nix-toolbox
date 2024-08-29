@@ -15,6 +15,7 @@
       imports = [
         ./internal/blueprints.nix
         ./oci
+        ./helm
       ];
 
       systems = [
