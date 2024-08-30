@@ -111,6 +111,21 @@ in
       };
     };
 
+    hooks = {
+      pre = mkOption {
+        description = "Script to be executed before executing action";
+        type = types.lines;
+        default = "";
+        example = "echo Hello nix-toolbox!";
+      };
+      post = mkOption {
+        description = "Script to be executed after executing action";
+        type = types.lines;
+        default = "";
+        example = "echo Goodbye nix-toolbox!";
+      };
+    };
+
     copyToRoot = mkOption {
       description = "Files or directories to copy to root of the derivation. Used to pass additional configs";
       type = types.attrsOf types.path;
@@ -242,24 +257,32 @@ in
           __commandApply = ''
             #! ${pkgs.bash}/bin/sh
             cd ${placeholder "out"}
-            ${placeholder "out"}/bin/plan.sh
+            ${config.hooks.pre}
+            ${helm} diff upgrade ${config.name} --install  ${toString (config.helmArgs.plan ++ valuesArgs)}
             ${bashConfirmationDialog "upgrade --install ${config.name} ${toString (config.helmArgs.apply ++ valuesArgs)}" "Apply canceled"}
+            ${config.hooks.post}
           '';
 
           __commandDestroy = ''
             #! ${pkgs.bash}/bin/sh
+            ${config.hooks.pre}
             ${bashConfirmationDialog "uninstall ${config.name} ${toString config.helmArgs.destroy}" "Destroy canceled"}
+            ${config.hooks.post}
           '';
 
           __commandPlan = ''
             #! ${pkgs.bash}/bin/sh
             cd ${placeholder "out"}
+            ${config.hooks.pre}
             ${helm} diff upgrade ${config.name} --install  ${toString (config.helmArgs.plan ++ valuesArgs)}
+            ${config.hooks.post}
           '';
 
           __commandStatus = ''
             #! ${pkgs.bash}/bin/sh
+            ${config.hooks.pre}
             ${helm} status ${config.name} ${toString config.helmArgs.status}
+            ${config.hooks.post}
           '';
 
         in
