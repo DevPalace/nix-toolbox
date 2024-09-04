@@ -27,12 +27,48 @@
       perSystem =
         {
           pkgs,
+          lib,
           system,
+          self',
           ...
         }:
         {
 
           formatter = pkgs.nixfmt-rfc-style;
+
+          packages.docs =
+            let
+
+              summary = pkgs.writeText "options.md" ''
+                # Summary
+
+                - [OCI](./oci.md)
+                  - [Options Reference](./oci.md)
+                - [Helm](./helm.md)
+                   ${helmDocs}
+              '';
+
+              helmDocs = toString (
+                lib.mapAttrsToList (
+                  n: drv: "- [${n}](./helm/${n}.md)\n  "
+                ) self'.legacyPackages.helm.k8sResourceDocs
+              );
+              cpHelmDocs = toString (
+                lib.mapAttrsToList (
+                  n: drv: "cp -f ${drv} src/helm/${n}.md\n"
+                ) self'.legacyPackages.helm.k8sResourceDocs
+              );
+            in
+            pkgs.writeShellScriptBin "build-mdbook.sh" ''
+              cd docs
+              rm -rf src
+              mkdir -p src/helm
+              touch src/helm.md
+              cp ${summary} src/SUMMARY.md
+              cp ${self'.legacyPackages.oci.docs} src/oci.md
+              ${cpHelmDocs}
+              ${lib.getExe pkgs.mdbook} build
+            '';
         };
     };
 }

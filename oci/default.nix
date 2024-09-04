@@ -5,6 +5,7 @@
     {
       pkgs,
       system,
+      self',
       ...
     }:
     let
@@ -13,10 +14,11 @@
     rec {
       legacyPackages.oci = {
         builder = import ./lib/builder.nix { inherit pkgs n2c; };
-        docs = import ../docs {
-          inherit pkgs;
-          inherit (legacyPackages.oci) builder;
-        };
+        docs =
+          (pkgs.nixosOptionsDoc {
+            warningsAreErrors = false;
+            options = self'.checks.usersAndPerms.image.options;
+          }).optionsCommonMark;
       };
       checks = import ./tests {
         inherit pkgs;

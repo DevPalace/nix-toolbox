@@ -36,10 +36,12 @@ let
   resourceNameToMdDocs = lib.mapAttrs (n: _: mkDocs resources.${n}) resourceOptions;
 in
 {
-  k8sResourceDocs = pkgs.runCommand "helm-resources-docs" { } ''
+  k8sResourceDocsAll = pkgs.runCommand "helm-resources-docs" { } ''
     mkdir $out
     ${toString (lib.mapAttrsToList (n: drv: "cp ${drv} $out/${n}.md\n") resourceNameToMdDocs)}
   '';
+
+  k8sResourceDocs = resourceNameToMdDocs;
 
   wrapperDocs = mkDocs baseModuleEval.options;
 }

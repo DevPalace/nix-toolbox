@@ -26,7 +26,7 @@ let
     pkgs.runCommandLocal "${image.name}-compare-output-test"
       {
         passthru = {
-          inherit image;
+          image = image';
         };
       }
       ''

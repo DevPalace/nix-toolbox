@@ -53,7 +53,7 @@
       '';
 
       legacyPackages.helm = {
-        inherit (docs) k8sResourceDocs wrapperDocs;
+        inherit (docs) k8sResourceDocs wrapperDocs k8sResourceDocsAll;
         examples.nginx = import ./examples/nginx {
           inherit pkgs;
           nix-toolbox = self;
