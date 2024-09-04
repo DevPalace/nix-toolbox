@@ -14,16 +14,19 @@ let
       chartConstructor =
         name: target:
         let
-          args = lib.recursiveUpdate (defaults args) ({ targetName = name; } // (target args));
+          args = lib.recursiveUpdate (defaults eval.config) (target eval.config);
           eval = lib.evalModules {
             modules = [
               ./base.options.nix
               ./resource.options.nix
+              { targetName = name; }
               (../generated + "/v${k8sVersion}.nix")
               args
             ];
             specialArgs = {
               inherit pkgs;
+              self = result;
+              ci.mkHelmGithubAction = pkgs.callPackage ./mkHelmGithubAction.nix { };
             };
           };
         in
@@ -44,13 +47,15 @@ let
       targetGroups' = (targetGroups targets) // {
         ALL = targets;
       };
+      result =
+        deployments
+        // (lib.mapAttrs (name: targets: {
+          apply = mkAllScript targets "apply";
+          destroy = mkAllScript targets "destroy";
+          plan = mkAllScript targets "plan";
+          status = mkAllScript targets "status";
+        }) targetGroups');
     in
-    deployments
-    // (lib.mapAttrs (name: targets: {
-      apply = mkAllScript targets "apply";
-      destroy = mkAllScript targets "destroy";
-      plan = mkAllScript targets "plan";
-      status = mkAllScript targets "status";
-    }) targetGroups');
+    result;
 in
 mkHelm

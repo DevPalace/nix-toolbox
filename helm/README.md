@@ -27,22 +27,24 @@ curl localhost # Should result in nginx homepage
 ## CI
 This is an example how to autogenerate Github Action for EKS:
 ```nix
-hooks.pre = mkHelmGithubAction {
-  deploymentAttrPath = "coingecko-proxy";
-  deployment = result;
-  outputPath = "$PRJ_ROOT/.github/workflows/coingecko-proxy.yaml";
-  extraDefinitions.permissions = {
-    id-token = "write"; # This is required for AWS credentials action
-    contents = "read";
+{self, ci, ...}: {
+  hooks.pre = ci.mkHelmGithubAction {
+    deploymentAttrPath = "coingecko-proxy";
+    deployment = self;
+    outputPath = "$PRJ_ROOT/.github/workflows/coingecko-proxy.yaml";
+    extraDefinitions.permissions = {
+      id-token = "write"; # This is required for AWS credentials action
+      contents = "read";
+    };
+    extraSteps = [
+      {
+        uses = "aws-actions/configure-aws-credentials@v4.0.2";
+        "with" = {
+          role-to-assume = "\${{ github.ref == 'refs/heads/master' && 'arn:aws:iam::111111111111:role/eks-admin' || 'arn:aws:iam::111111111111:role/eks-devs' }}";
+          aws-region = "us-east-1";
+        };
+      }
+    ];
   };
-  extraSteps = [
-    {
-      uses = "aws-actions/configure-aws-credentials@v4.0.2";
-      "with" = {
-        role-to-assume = "\${{ github.ref == 'refs/heads/master' && 'arn:aws:iam::111111111111:role/eks-admin' || 'arn:aws:iam::111111111111:role/eks-devs' }}";
-        aws-region = "us-east-1";
-      };
-    }
-  ];
-};
+}
 ```
