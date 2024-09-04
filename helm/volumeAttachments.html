@@ -1,0 +1,2103 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>volumeAttachments - nix-toolbox</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../oci.html"><strong aria-hidden="true">1.</strong> OCI</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../oci.html"><strong aria-hidden="true">1.1.</strong> Options Reference</a></li></ol></li><li class="chapter-item expanded "><a href="../helm.html"><strong aria-hidden="true">2.</strong> Helm</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../helm/APIServices.html"><strong aria-hidden="true">2.1.</strong> APIServices</a></li><li class="chapter-item expanded "><a href="../helm/autoscaling.html"><strong aria-hidden="true">2.2.</strong> autoscaling</a></li><li class="chapter-item expanded "><a href="../helm/bindings.html"><strong aria-hidden="true">2.3.</strong> bindings</a></li><li class="chapter-item expanded "><a href="../helm/cSIDrivers.html"><strong aria-hidden="true">2.4.</strong> cSIDrivers</a></li><li class="chapter-item expanded "><a href="../helm/cSINodes.html"><strong aria-hidden="true">2.5.</strong> cSINodes</a></li><li class="chapter-item expanded "><a href="../helm/cSIStorageCapacities.html"><strong aria-hidden="true">2.6.</strong> cSIStorageCapacities</a></li><li class="chapter-item expanded "><a href="../helm/certificateSigningRequests.html"><strong aria-hidden="true">2.7.</strong> certificateSigningRequests</a></li><li class="chapter-item expanded "><a href="../helm/clusterRoleBindings.html"><strong aria-hidden="true">2.8.</strong> clusterRoleBindings</a></li><li class="chapter-item expanded "><a href="../helm/clusterRoles.html"><strong aria-hidden="true">2.9.</strong> clusterRoles</a></li><li class="chapter-item expanded "><a href="../helm/clusterTrustBundles.html"><strong aria-hidden="true">2.10.</strong> clusterTrustBundles</a></li><li class="chapter-item expanded "><a href="../helm/configMaps.html"><strong aria-hidden="true">2.11.</strong> configMaps</a></li><li class="chapter-item expanded "><a href="../helm/controllerRevisions.html"><strong aria-hidden="true">2.12.</strong> controllerRevisions</a></li><li class="chapter-item expanded "><a href="../helm/cronJobs.html"><strong aria-hidden="true">2.13.</strong> cronJobs</a></li><li class="chapter-item expanded "><a href="../helm/daemonSets.html"><strong aria-hidden="true">2.14.</strong> daemonSets</a></li><li class="chapter-item expanded "><a href="../helm/deployments.html"><strong aria-hidden="true">2.15.</strong> deployments</a></li><li class="chapter-item expanded "><a href="../helm/endpointSlices.html"><strong aria-hidden="true">2.16.</strong> endpointSlices</a></li><li class="chapter-item expanded "><a href="../helm/endpoints.html"><strong aria-hidden="true">2.17.</strong> endpoints</a></li><li class="chapter-item expanded "><a href="../helm/events.html"><strong aria-hidden="true">2.18.</strong> events</a></li><li class="chapter-item expanded "><a href="../helm/eviction.html"><strong aria-hidden="true">2.19.</strong> eviction</a></li><li class="chapter-item expanded "><a href="../helm/flowSchemas.html"><strong aria-hidden="true">2.20.</strong> flowSchemas</a></li><li class="chapter-item expanded "><a href="../helm/horizontalPodAutoscalers.html"><strong aria-hidden="true">2.21.</strong> horizontalPodAutoscalers</a></li><li class="chapter-item expanded "><a href="../helm/iPAddresses.html"><strong aria-hidden="true">2.22.</strong> iPAddresses</a></li><li class="chapter-item expanded "><a href="../helm/ingressClasses.html"><strong aria-hidden="true">2.23.</strong> ingressClasses</a></li><li class="chapter-item expanded "><a href="../helm/ingresses.html"><strong aria-hidden="true">2.24.</strong> ingresses</a></li><li class="chapter-item expanded "><a href="../helm/jobs.html"><strong aria-hidden="true">2.25.</strong> jobs</a></li><li class="chapter-item expanded "><a href="../helm/leases.html"><strong aria-hidden="true">2.26.</strong> leases</a></li><li class="chapter-item expanded "><a href="../helm/limitRanges.html"><strong aria-hidden="true">2.27.</strong> limitRanges</a></li><li class="chapter-item expanded "><a href="../helm/localSubjectAccessReviews.html"><strong aria-hidden="true">2.28.</strong> localSubjectAccessReviews</a></li><li class="chapter-item expanded "><a href="../helm/mutatingWebhookConfigurations.html"><strong aria-hidden="true">2.29.</strong> mutatingWebhookConfigurations</a></li><li class="chapter-item expanded "><a href="../helm/namespaces.html"><strong aria-hidden="true">2.30.</strong> namespaces</a></li><li class="chapter-item expanded "><a href="../helm/networkPolicies.html"><strong aria-hidden="true">2.31.</strong> networkPolicies</a></li><li class="chapter-item expanded "><a href="../helm/nodes.html"><strong aria-hidden="true">2.32.</strong> nodes</a></li><li class="chapter-item expanded "><a href="../helm/persistentVolumeClaims.html"><strong aria-hidden="true">2.33.</strong> persistentVolumeClaims</a></li><li class="chapter-item expanded "><a href="../helm/persistentVolumes.html"><strong aria-hidden="true">2.34.</strong> persistentVolumes</a></li><li class="chapter-item expanded "><a href="../helm/podDisruptionBudgets.html"><strong aria-hidden="true">2.35.</strong> podDisruptionBudgets</a></li><li class="chapter-item expanded "><a href="../helm/podSchedulingContexts.html"><strong aria-hidden="true">2.36.</strong> podSchedulingContexts</a></li><li class="chapter-item expanded "><a href="../helm/podTemplates.html"><strong aria-hidden="true">2.37.</strong> podTemplates</a></li><li class="chapter-item expanded "><a href="../helm/pods.html"><strong aria-hidden="true">2.38.</strong> pods</a></li><li class="chapter-item expanded "><a href="../helm/policy.html"><strong aria-hidden="true">2.39.</strong> policy</a></li><li class="chapter-item expanded "><a href="../helm/priorityClasses.html"><strong aria-hidden="true">2.40.</strong> priorityClasses</a></li><li class="chapter-item expanded "><a href="../helm/priorityLevelConfigurations.html"><strong aria-hidden="true">2.41.</strong> priorityLevelConfigurations</a></li><li class="chapter-item expanded "><a href="../helm/replicaSets.html"><strong aria-hidden="true">2.42.</strong> replicaSets</a></li><li class="chapter-item expanded "><a href="../helm/replicationControllers.html"><strong aria-hidden="true">2.43.</strong> replicationControllers</a></li><li class="chapter-item expanded "><a href="../helm/resourceClaimParameters.html"><strong aria-hidden="true">2.44.</strong> resourceClaimParameters</a></li><li class="chapter-item expanded "><a href="../helm/resourceClaimTemplates.html"><strong aria-hidden="true">2.45.</strong> resourceClaimTemplates</a></li><li class="chapter-item expanded "><a href="../helm/resourceClaims.html"><strong aria-hidden="true">2.46.</strong> resourceClaims</a></li><li class="chapter-item expanded "><a href="../helm/resourceClassParameters.html"><strong aria-hidden="true">2.47.</strong> resourceClassParameters</a></li><li class="chapter-item expanded "><a href="../helm/resourceClasses.html"><strong aria-hidden="true">2.48.</strong> resourceClasses</a></li><li class="chapter-item expanded "><a href="../helm/resourceQuotas.html"><strong aria-hidden="true">2.49.</strong> resourceQuotas</a></li><li class="chapter-item expanded "><a href="../helm/resourceSlices.html"><strong aria-hidden="true">2.50.</strong> resourceSlices</a></li><li class="chapter-item expanded "><a href="../helm/roleBindings.html"><strong aria-hidden="true">2.51.</strong> roleBindings</a></li><li class="chapter-item expanded "><a href="../helm/roles.html"><strong aria-hidden="true">2.52.</strong> roles</a></li><li class="chapter-item expanded "><a href="../helm/runtimeClasses.html"><strong aria-hidden="true">2.53.</strong> runtimeClasses</a></li><li class="chapter-item expanded "><a href="../helm/secrets.html"><strong aria-hidden="true">2.54.</strong> secrets</a></li><li class="chapter-item expanded "><a href="../helm/selfSubjectAccessReviews.html"><strong aria-hidden="true">2.55.</strong> selfSubjectAccessReviews</a></li><li class="chapter-item expanded "><a href="../helm/selfSubjectReviews.html"><strong aria-hidden="true">2.56.</strong> selfSubjectReviews</a></li><li class="chapter-item expanded "><a href="../helm/selfSubjectRulesReviews.html"><strong aria-hidden="true">2.57.</strong> selfSubjectRulesReviews</a></li><li class="chapter-item expanded "><a href="../helm/serviceAccounts.html"><strong aria-hidden="true">2.58.</strong> serviceAccounts</a></li><li class="chapter-item expanded "><a href="../helm/serviceCIDRs.html"><strong aria-hidden="true">2.59.</strong> serviceCIDRs</a></li><li class="chapter-item expanded "><a href="../helm/services.html"><strong aria-hidden="true">2.60.</strong> services</a></li><li class="chapter-item expanded "><a href="../helm/statefulSets.html"><strong aria-hidden="true">2.61.</strong> statefulSets</a></li><li class="chapter-item expanded "><a href="../helm/storageClasses.html"><strong aria-hidden="true">2.62.</strong> storageClasses</a></li><li class="chapter-item expanded "><a href="../helm/storageVersionMigrations.html"><strong aria-hidden="true">2.63.</strong> storageVersionMigrations</a></li><li class="chapter-item expanded "><a href="../helm/storageVersions.html"><strong aria-hidden="true">2.64.</strong> storageVersions</a></li><li class="chapter-item expanded "><a href="../helm/subjectAccessReviews.html"><strong aria-hidden="true">2.65.</strong> subjectAccessReviews</a></li><li class="chapter-item expanded "><a href="../helm/token.html"><strong aria-hidden="true">2.66.</strong> token</a></li><li class="chapter-item expanded "><a href="../helm/tokenReviews.html"><strong aria-hidden="true">2.67.</strong> tokenReviews</a></li><li class="chapter-item expanded "><a href="../helm/validatingAdmissionPolicies.html"><strong aria-hidden="true">2.68.</strong> validatingAdmissionPolicies</a></li><li class="chapter-item expanded "><a href="../helm/validatingAdmissionPolicyBindings.html"><strong aria-hidden="true">2.69.</strong> validatingAdmissionPolicyBindings</a></li><li class="chapter-item expanded "><a href="../helm/validatingWebhookConfigurations.html"><strong aria-hidden="true">2.70.</strong> validatingWebhookConfigurations</a></li><li class="chapter-item expanded "><a href="../helm/volumeAttachments.html" class="active"><strong aria-hidden="true">2.71.</strong> volumeAttachments</a></li><li class="chapter-item expanded "><a href="../helm/volumeAttributesClasses.html"><strong aria-hidden="true">2.72.</strong> volumeAttributesClasses</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">nix-toolbox</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="resourcesvolumeattachments"><a class="header" href="#resourcesvolumeattachments">resources.volumeAttachments</a></h2>
+<p>VolumeAttachment captures the intent to attach or detach the specified volume to/from the specified node.</p>
+<p>VolumeAttachment objects are non-namespaced.</p>
+<p><em>Type:</em>
+attribute set of (submodule)</p>
+<p><em>Default:</em>
+<code>{ }</code></p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnameapiversion"><a class="header" href="#resourcesvolumeattachmentsnameapiversion">resources.volumeAttachments.&lt;name&gt;.apiVersion</a></h2>
+<p>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamekind"><a class="header" href="#resourcesvolumeattachmentsnamekind">resources.volumeAttachments.&lt;name&gt;.kind</a></h2>
+<p>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadata"><a class="header" href="#resourcesvolumeattachmentsnamemetadata">resources.volumeAttachments.&lt;name&gt;.metadata</a></h2>
+<p>Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadataannotations"><a class="header" href="#resourcesvolumeattachmentsnamemetadataannotations">resources.volumeAttachments.&lt;name&gt;.metadata.annotations</a></h2>
+<p>Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations</p>
+<p><em>Type:</em>
+null or (attribute set of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadatacreationtimestamp"><a class="header" href="#resourcesvolumeattachmentsnamemetadatacreationtimestamp">resources.volumeAttachments.&lt;name&gt;.metadata.creationTimestamp</a></h2>
+<p>CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC.</p>
+<p>Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadatadeletiongraceperiodseconds"><a class="header" href="#resourcesvolumeattachmentsnamemetadatadeletiongraceperiodseconds">resources.volumeAttachments.&lt;name&gt;.metadata.deletionGracePeriodSeconds</a></h2>
+<p>Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.</p>
+<p><em>Type:</em>
+null or signed integer</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadatadeletiontimestamp"><a class="header" href="#resourcesvolumeattachmentsnamemetadatadeletiontimestamp">resources.volumeAttachments.&lt;name&gt;.metadata.deletionTimestamp</a></h2>
+<p>DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested.</p>
+<p>Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadatafinalizers"><a class="header" href="#resourcesvolumeattachmentsnamemetadatafinalizers">resources.volumeAttachments.&lt;name&gt;.metadata.finalizers</a></h2>
+<p>Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.</p>
+<p><em>Type:</em>
+null or (list of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadatageneratename"><a class="header" href="#resourcesvolumeattachmentsnamemetadatageneratename">resources.volumeAttachments.&lt;name&gt;.metadata.generateName</a></h2>
+<p>GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.</p>
+<p>If this field is specified and the generated name exists, the server will return a 409.</p>
+<p>Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadatageneration"><a class="header" href="#resourcesvolumeattachmentsnamemetadatageneration">resources.volumeAttachments.&lt;name&gt;.metadata.generation</a></h2>
+<p>A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.</p>
+<p><em>Type:</em>
+null or signed integer</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadatalabels"><a class="header" href="#resourcesvolumeattachmentsnamemetadatalabels">resources.volumeAttachments.&lt;name&gt;.metadata.labels</a></h2>
+<p>Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels</p>
+<p><em>Type:</em>
+null or (attribute set of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadatamanagedfields"><a class="header" href="#resourcesvolumeattachmentsnamemetadatamanagedfields">resources.volumeAttachments.&lt;name&gt;.metadata.managedFields</a></h2>
+<p>ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn’t need to set or understand this field. A workflow can be the user’s name, a controller’s name, or the name of a specific apply path like “ci-cd”. The set of fields is always in the version that the workflow used when modifying the object.</p>
+<p><em>Type:</em>
+null or (list of (submodule))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadatamanagedfieldsapiversion"><a class="header" href="#resourcesvolumeattachmentsnamemetadatamanagedfieldsapiversion">resources.volumeAttachments.&lt;name&gt;.metadata.managedFields.*.apiVersion</a></h2>
+<p>APIVersion defines the version of this resource that this field set applies to. The format is “group/version” just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadatamanagedfieldsfieldstype"><a class="header" href="#resourcesvolumeattachmentsnamemetadatamanagedfieldsfieldstype">resources.volumeAttachments.&lt;name&gt;.metadata.managedFields.*.fieldsType</a></h2>
+<p>FieldsType is the discriminator for the different fields format and version. There is currently only one possible value: “FieldsV1”</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadatamanagedfieldsfieldsv1"><a class="header" href="#resourcesvolumeattachmentsnamemetadatamanagedfieldsfieldsv1">resources.volumeAttachments.&lt;name&gt;.metadata.managedFields.*.fieldsV1</a></h2>
+<p>FieldsV1 holds the first JSON version format as described in the “FieldsV1” type.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadatamanagedfieldsmanager"><a class="header" href="#resourcesvolumeattachmentsnamemetadatamanagedfieldsmanager">resources.volumeAttachments.&lt;name&gt;.metadata.managedFields.*.manager</a></h2>
+<p>Manager is an identifier of the workflow managing these fields.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadatamanagedfieldsoperation"><a class="header" href="#resourcesvolumeattachmentsnamemetadatamanagedfieldsoperation">resources.volumeAttachments.&lt;name&gt;.metadata.managedFields.*.operation</a></h2>
+<p>Operation is the type of operation which lead to this ManagedFieldsEntry being created. The only valid values for this field are ‘Apply’ and ‘Update’.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadatamanagedfieldssubresource"><a class="header" href="#resourcesvolumeattachmentsnamemetadatamanagedfieldssubresource">resources.volumeAttachments.&lt;name&gt;.metadata.managedFields.*.subresource</a></h2>
+<p>Subresource is the name of the subresource used to update that object, or empty string if the object was updated through the main resource. The value of this field is used to distinguish between managers, even if they share the same name. For example, a status update will be distinct from a regular update using the same manager name. Note that the APIVersion field is not related to the Subresource field and it always corresponds to the version of the main resource.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadatamanagedfieldstime"><a class="header" href="#resourcesvolumeattachmentsnamemetadatamanagedfieldstime">resources.volumeAttachments.&lt;name&gt;.metadata.managedFields.*.time</a></h2>
+<p>Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadataname"><a class="header" href="#resourcesvolumeattachmentsnamemetadataname">resources.volumeAttachments.&lt;name&gt;.metadata.name</a></h2>
+<p>Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadatanamespace"><a class="header" href="#resourcesvolumeattachmentsnamemetadatanamespace">resources.volumeAttachments.&lt;name&gt;.metadata.namespace</a></h2>
+<p>Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the “default” namespace, but “default” is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.</p>
+<p>Must be a DNS_LABEL. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadataownerreferences"><a class="header" href="#resourcesvolumeattachmentsnamemetadataownerreferences">resources.volumeAttachments.&lt;name&gt;.metadata.ownerReferences</a></h2>
+<p>List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.</p>
+<p><em>Type:</em>
+null or (attribute set of (submodule) or list of (submodule))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadataownerreferencesname_priority"><a class="header" href="#resourcesvolumeattachmentsnamemetadataownerreferencesname_priority">resources.volumeAttachments.&lt;name&gt;.metadata.ownerReferences.&lt;name&gt;._priority</a></h2>
+<p>This option has no description.</p>
+<p><em>Type:</em>
+null or signed integer</p>
+<p><em>Default:</em>
+<code>null</code></p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadataownerreferencesnameapiversion"><a class="header" href="#resourcesvolumeattachmentsnamemetadataownerreferencesnameapiversion">resources.volumeAttachments.&lt;name&gt;.metadata.ownerReferences.&lt;name&gt;.apiVersion</a></h2>
+<p>API version of the referent.</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadataownerreferencesnameblockownerdeletion"><a class="header" href="#resourcesvolumeattachmentsnamemetadataownerreferencesnameblockownerdeletion">resources.volumeAttachments.&lt;name&gt;.metadata.ownerReferences.&lt;name&gt;.blockOwnerDeletion</a></h2>
+<p>If true, AND if the owner has the “foregroundDeletion” finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. See https://kubernetes.io/docs/concepts/architecture/garbage-collection/#foreground-deletion for how the garbage collector interacts with this field and enforces the foreground deletion. Defaults to false. To set this field, a user needs “delete” permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadataownerreferencesnamecontroller"><a class="header" href="#resourcesvolumeattachmentsnamemetadataownerreferencesnamecontroller">resources.volumeAttachments.&lt;name&gt;.metadata.ownerReferences.&lt;name&gt;.controller</a></h2>
+<p>If true, this reference points to the managing controller.</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadataownerreferencesnamekind"><a class="header" href="#resourcesvolumeattachmentsnamemetadataownerreferencesnamekind">resources.volumeAttachments.&lt;name&gt;.metadata.ownerReferences.&lt;name&gt;.kind</a></h2>
+<p>Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadataownerreferencesnamename"><a class="header" href="#resourcesvolumeattachmentsnamemetadataownerreferencesnamename">resources.volumeAttachments.&lt;name&gt;.metadata.ownerReferences.&lt;name&gt;.name</a></h2>
+<p>Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadataownerreferencesnameuid"><a class="header" href="#resourcesvolumeattachmentsnamemetadataownerreferencesnameuid">resources.volumeAttachments.&lt;name&gt;.metadata.ownerReferences.&lt;name&gt;.uid</a></h2>
+<p>UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadataresourceversion"><a class="header" href="#resourcesvolumeattachmentsnamemetadataresourceversion">resources.volumeAttachments.&lt;name&gt;.metadata.resourceVersion</a></h2>
+<p>An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.</p>
+<p>Populated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadataselflink"><a class="header" href="#resourcesvolumeattachmentsnamemetadataselflink">resources.volumeAttachments.&lt;name&gt;.metadata.selfLink</a></h2>
+<p>Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamemetadatauid"><a class="header" href="#resourcesvolumeattachmentsnamemetadatauid">resources.volumeAttachments.&lt;name&gt;.metadata.uid</a></h2>
+<p>UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.</p>
+<p>Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespec"><a class="header" href="#resourcesvolumeattachmentsnamespec">resources.volumeAttachments.&lt;name&gt;.spec</a></h2>
+<p>spec represents specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.</p>
+<p><em>Type:</em>
+submodule</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecattacher"><a class="header" href="#resourcesvolumeattachmentsnamespecattacher">resources.volumeAttachments.&lt;name&gt;.spec.attacher</a></h2>
+<p>attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecnodename"><a class="header" href="#resourcesvolumeattachmentsnamespecnodename">resources.volumeAttachments.&lt;name&gt;.spec.nodeName</a></h2>
+<p>nodeName represents the node that the volume should be attached to.</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsource"><a class="header" href="#resourcesvolumeattachmentsnamespecsource">resources.volumeAttachments.&lt;name&gt;.spec.source</a></h2>
+<p>source represents the volume that should be attached.</p>
+<p><em>Type:</em>
+submodule</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespec"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespec">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec</a></h2>
+<p>inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod’s inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod’s inline VolumeSource to a PersistentVolumeSpec. This field is beta-level and is only honored by servers that enabled the CSIMigration feature.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecaccessmodes"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecaccessmodes">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.accessModes</a></h2>
+<p>accessModes contains all ways the volume can be mounted. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes</p>
+<p><em>Type:</em>
+null or (list of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecawselasticblockstore"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecawselasticblockstore">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.awsElasticBlockStore</a></h2>
+<p>awsElasticBlockStore represents an AWS Disk resource that is attached to a kubelet’s host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecawselasticblockstorefstype"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecawselasticblockstorefstype">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.awsElasticBlockStore.fsType</a></h2>
+<p>fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: “ext4”, “xfs”, “ntfs”. Implicitly inferred to be “ext4” if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecawselasticblockstorepartition"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecawselasticblockstorepartition">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.awsElasticBlockStore.partition</a></h2>
+<p>partition is the partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as “1”. Similarly, the volume partition for /dev/sda is “0” (or you can leave the property empty).</p>
+<p><em>Type:</em>
+null or signed integer</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecawselasticblockstorereadonly"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecawselasticblockstorereadonly">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.awsElasticBlockStore.readOnly</a></h2>
+<p>readOnly value true will force the readOnly setting in VolumeMounts. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecawselasticblockstorevolumeid"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecawselasticblockstorevolumeid">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.awsElasticBlockStore.volumeID</a></h2>
+<p>volumeID is unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecazuredisk"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecazuredisk">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.azureDisk</a></h2>
+<p>azureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurediskcachingmode"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurediskcachingmode">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.azureDisk.cachingMode</a></h2>
+<p>cachingMode is the Host Caching mode: None, Read Only, Read Write.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurediskdiskname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurediskdiskname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.azureDisk.diskName</a></h2>
+<p>diskName is the Name of the data disk in the blob storage</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurediskdiskuri"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurediskdiskuri">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.azureDisk.diskURI</a></h2>
+<p>diskURI is the URI of data disk in the blob storage</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurediskfstype"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurediskfstype">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.azureDisk.fsType</a></h2>
+<p>fsType is Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. “ext4”, “xfs”, “ntfs”. Implicitly inferred to be “ext4” if unspecified.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurediskkind"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurediskkind">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.azureDisk.kind</a></h2>
+<p>kind expected values are Shared: multiple blob disks per storage account  Dedicated: single blob disk per storage account  Managed: azure managed data disk (only in managed availability set). defaults to shared</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurediskreadonly"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurediskreadonly">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.azureDisk.readOnly</a></h2>
+<p>readOnly Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurefile"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurefile">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.azureFile</a></h2>
+<p>azureFile represents an Azure File Service mount on the host and bind mount to the pod.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurefilereadonly"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurefilereadonly">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.azureFile.readOnly</a></h2>
+<p>readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurefilesecretname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurefilesecretname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.azureFile.secretName</a></h2>
+<p>secretName is the name of secret that contains Azure Storage Account Name and Key</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurefilesecretnamespace"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurefilesecretnamespace">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.azureFile.secretNamespace</a></h2>
+<p>secretNamespace is the namespace of the secret that contains Azure Storage Account Name and Key default is the same as the Pod</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurefilesharename"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecazurefilesharename">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.azureFile.shareName</a></h2>
+<p>shareName is the azure Share Name</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccapacity"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccapacity">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.capacity</a></h2>
+<p>capacity is the description of the persistent volume’s resources and capacity. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity</p>
+<p><em>Type:</em>
+null or (attribute set of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccephfs"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccephfs">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.cephfs</a></h2>
+<p>cephFS represents a Ceph FS mount on the host that shares a pod’s lifetime</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccephfsmonitors"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccephfsmonitors">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.cephfs.monitors</a></h2>
+<p>monitors is Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it</p>
+<p><em>Type:</em>
+list of (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccephfspath"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccephfspath">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.cephfs.path</a></h2>
+<p>path is Optional: Used as the mounted root, rather than the full Ceph tree, default is /</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccephfsreadonly"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccephfsreadonly">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.cephfs.readOnly</a></h2>
+<p>readOnly is Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccephfssecretfile"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccephfssecretfile">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.cephfs.secretFile</a></h2>
+<p>secretFile is Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccephfssecretref"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccephfssecretref">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.cephfs.secretRef</a></h2>
+<p>secretRef is Optional: SecretRef is reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccephfssecretrefname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccephfssecretrefname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.cephfs.secretRef.name</a></h2>
+<p>name is unique within a namespace to reference a secret resource.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccephfssecretrefnamespace"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccephfssecretrefnamespace">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.cephfs.secretRef.namespace</a></h2>
+<p>namespace defines the space within which the secret name must be unique.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccephfsuser"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccephfsuser">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.cephfs.user</a></h2>
+<p>user is Optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccinder"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccinder">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.cinder</a></h2>
+<p>cinder represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccinderfstype"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccinderfstype">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.cinder.fsType</a></h2>
+<p>fsType Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: “ext4”, “xfs”, “ntfs”. Implicitly inferred to be “ext4” if unspecified. More info: https://examples.k8s.io/mysql-cinder-pd/README.md</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccinderreadonly"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccinderreadonly">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.cinder.readOnly</a></h2>
+<p>readOnly is Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://examples.k8s.io/mysql-cinder-pd/README.md</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccindersecretref"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccindersecretref">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.cinder.secretRef</a></h2>
+<p>secretRef is Optional: points to a secret object containing parameters used to connect to OpenStack.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccindersecretrefname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccindersecretrefname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.cinder.secretRef.name</a></h2>
+<p>name is unique within a namespace to reference a secret resource.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccindersecretrefnamespace"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccindersecretrefnamespace">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.cinder.secretRef.namespace</a></h2>
+<p>namespace defines the space within which the secret name must be unique.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccindervolumeid"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccindervolumeid">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.cinder.volumeID</a></h2>
+<p>volumeID used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecclaimref"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecclaimref">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.claimRef</a></h2>
+<p>claimRef is part of a bi-directional binding between PersistentVolume and PersistentVolumeClaim. Expected to be non-nil when bound. claim.VolumeName is the authoritative bind between PV and PVC. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#binding</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecclaimrefapiversion"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecclaimrefapiversion">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.claimRef.apiVersion</a></h2>
+<p>API version of the referent.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecclaimreffieldpath"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecclaimreffieldpath">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.claimRef.fieldPath</a></h2>
+<p>If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: “spec.containers{name}” (where “name” refers to the name of the container that triggered the event) or if no container name is specified “spec.containers[2]” (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecclaimrefkind"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecclaimrefkind">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.claimRef.kind</a></h2>
+<p>Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecclaimrefname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecclaimrefname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.claimRef.name</a></h2>
+<p>Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecclaimrefnamespace"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecclaimrefnamespace">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.claimRef.namespace</a></h2>
+<p>Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecclaimrefresourceversion"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecclaimrefresourceversion">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.claimRef.resourceVersion</a></h2>
+<p>Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecclaimrefuid"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecclaimrefuid">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.claimRef.uid</a></h2>
+<p>UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsi"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsi">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi</a></h2>
+<p>csi represents storage that is handled by an external CSI driver (Beta feature).</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsicontrollerexpandsecretref"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsicontrollerexpandsecretref">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi.controllerExpandSecretRef</a></h2>
+<p>controllerExpandSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI ControllerExpandVolume call. This field is optional, and may be empty if no secret is required. If the secret object contains more than one secret, all secrets are passed.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsicontrollerexpandsecretrefname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsicontrollerexpandsecretrefname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi.controllerExpandSecretRef.name</a></h2>
+<p>name is unique within a namespace to reference a secret resource.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsicontrollerexpandsecretrefnamespace"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsicontrollerexpandsecretrefnamespace">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi.controllerExpandSecretRef.namespace</a></h2>
+<p>namespace defines the space within which the secret name must be unique.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsicontrollerpublishsecretref"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsicontrollerpublishsecretref">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi.controllerPublishSecretRef</a></h2>
+<p>controllerPublishSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI ControllerPublishVolume and ControllerUnpublishVolume calls. This field is optional, and may be empty if no secret is required. If the secret object contains more than one secret, all secrets are passed.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsicontrollerpublishsecretrefname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsicontrollerpublishsecretrefname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi.controllerPublishSecretRef.name</a></h2>
+<p>name is unique within a namespace to reference a secret resource.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsicontrollerpublishsecretrefnamespace"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsicontrollerpublishsecretrefnamespace">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi.controllerPublishSecretRef.namespace</a></h2>
+<p>namespace defines the space within which the secret name must be unique.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsidriver"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsidriver">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi.driver</a></h2>
+<p>driver is the name of the driver to use for this volume. Required.</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsifstype"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsifstype">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi.fsType</a></h2>
+<p>fsType to mount. Must be a filesystem type supported by the host operating system. Ex. “ext4”, “xfs”, “ntfs”.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsinodeexpandsecretref"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsinodeexpandsecretref">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi.nodeExpandSecretRef</a></h2>
+<p>nodeExpandSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodeExpandVolume call. This field is optional, may be omitted if no secret is required. If the secret object contains more than one secret, all secrets are passed.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsinodeexpandsecretrefname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsinodeexpandsecretrefname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi.nodeExpandSecretRef.name</a></h2>
+<p>name is unique within a namespace to reference a secret resource.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsinodeexpandsecretrefnamespace"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsinodeexpandsecretrefnamespace">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi.nodeExpandSecretRef.namespace</a></h2>
+<p>namespace defines the space within which the secret name must be unique.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsinodepublishsecretref"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsinodepublishsecretref">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi.nodePublishSecretRef</a></h2>
+<p>nodePublishSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls. This field is optional, and may be empty if no secret is required. If the secret object contains more than one secret, all secrets are passed.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsinodepublishsecretrefname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsinodepublishsecretrefname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi.nodePublishSecretRef.name</a></h2>
+<p>name is unique within a namespace to reference a secret resource.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsinodepublishsecretrefnamespace"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsinodepublishsecretrefnamespace">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi.nodePublishSecretRef.namespace</a></h2>
+<p>namespace defines the space within which the secret name must be unique.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsinodestagesecretref"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsinodestagesecretref">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi.nodeStageSecretRef</a></h2>
+<p>nodeStageSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodeStageVolume and NodeStageVolume and NodeUnstageVolume calls. This field is optional, and may be empty if no secret is required. If the secret object contains more than one secret, all secrets are passed.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsinodestagesecretrefname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsinodestagesecretrefname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi.nodeStageSecretRef.name</a></h2>
+<p>name is unique within a namespace to reference a secret resource.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsinodestagesecretrefnamespace"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsinodestagesecretrefnamespace">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi.nodeStageSecretRef.namespace</a></h2>
+<p>namespace defines the space within which the secret name must be unique.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsireadonly"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsireadonly">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi.readOnly</a></h2>
+<p>readOnly value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write).</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsivolumeattributes"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsivolumeattributes">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi.volumeAttributes</a></h2>
+<p>volumeAttributes of the volume to publish.</p>
+<p><em>Type:</em>
+null or (attribute set of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsivolumehandle"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeccsivolumehandle">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.csi.volumeHandle</a></h2>
+<p>volumeHandle is the unique volume name returned by the CSI volume plugin’s CreateVolume to refer to the volume on all subsequent calls. Required.</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecfc"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecfc">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.fc</a></h2>
+<p>fc represents a Fibre Channel resource that is attached to a kubelet’s host machine and then exposed to the pod.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecfcfstype"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecfcfstype">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.fc.fsType</a></h2>
+<p>fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. “ext4”, “xfs”, “ntfs”. Implicitly inferred to be “ext4” if unspecified.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecfclun"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecfclun">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.fc.lun</a></h2>
+<p>lun is Optional: FC target lun number</p>
+<p><em>Type:</em>
+null or signed integer</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecfcreadonly"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecfcreadonly">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.fc.readOnly</a></h2>
+<p>readOnly is Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecfctargetwwns"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecfctargetwwns">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.fc.targetWWNs</a></h2>
+<p>targetWWNs is Optional: FC target worldwide names (WWNs)</p>
+<p><em>Type:</em>
+null or (list of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecfcwwids"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecfcwwids">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.fc.wwids</a></h2>
+<p>wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously.</p>
+<p><em>Type:</em>
+null or (list of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecflexvolume"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecflexvolume">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.flexVolume</a></h2>
+<p>flexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecflexvolumedriver"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecflexvolumedriver">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.flexVolume.driver</a></h2>
+<p>driver is the name of the driver to use for this volume.</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecflexvolumefstype"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecflexvolumefstype">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.flexVolume.fsType</a></h2>
+<p>fsType is the Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. “ext4”, “xfs”, “ntfs”. The default filesystem depends on FlexVolume script.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecflexvolumeoptions"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecflexvolumeoptions">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.flexVolume.options</a></h2>
+<p>options is Optional: this field holds extra command options if any.</p>
+<p><em>Type:</em>
+null or (attribute set of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecflexvolumereadonly"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecflexvolumereadonly">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.flexVolume.readOnly</a></h2>
+<p>readOnly is Optional: defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecflexvolumesecretref"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecflexvolumesecretref">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.flexVolume.secretRef</a></h2>
+<p>secretRef is Optional: SecretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecflexvolumesecretrefname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecflexvolumesecretrefname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.flexVolume.secretRef.name</a></h2>
+<p>name is unique within a namespace to reference a secret resource.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecflexvolumesecretrefnamespace"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecflexvolumesecretrefnamespace">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.flexVolume.secretRef.namespace</a></h2>
+<p>namespace defines the space within which the secret name must be unique.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecflocker"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecflocker">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.flocker</a></h2>
+<p>flocker represents a Flocker volume attached to a kubelet’s host machine and exposed to the pod for its usage. This depends on the Flocker control service being running</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecflockerdatasetname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecflockerdatasetname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.flocker.datasetName</a></h2>
+<p>datasetName is Name of the dataset stored as metadata -&gt; name on the dataset for Flocker should be considered as deprecated</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecflockerdatasetuuid"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecflockerdatasetuuid">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.flocker.datasetUUID</a></h2>
+<p>datasetUUID is the UUID of the dataset. This is unique identifier of a Flocker dataset</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecgcepersistentdisk"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecgcepersistentdisk">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.gcePersistentDisk</a></h2>
+<p>gcePersistentDisk represents a GCE Disk resource that is attached to a kubelet’s host machine and then exposed to the pod. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecgcepersistentdiskfstype"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecgcepersistentdiskfstype">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.gcePersistentDisk.fsType</a></h2>
+<p>fsType is filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: “ext4”, “xfs”, “ntfs”. Implicitly inferred to be “ext4” if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecgcepersistentdiskpartition"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecgcepersistentdiskpartition">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.gcePersistentDisk.partition</a></h2>
+<p>partition is the partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as “1”. Similarly, the volume partition for /dev/sda is “0” (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk</p>
+<p><em>Type:</em>
+null or signed integer</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecgcepersistentdiskpdname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecgcepersistentdiskpdname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.gcePersistentDisk.pdName</a></h2>
+<p>pdName is unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecgcepersistentdiskreadonly"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecgcepersistentdiskreadonly">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.gcePersistentDisk.readOnly</a></h2>
+<p>readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecglusterfs"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecglusterfs">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.glusterfs</a></h2>
+<p>glusterfs represents a Glusterfs volume that is attached to a host and exposed to the pod. Provisioned by an admin. More info: https://examples.k8s.io/volumes/glusterfs/README.md</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecglusterfsendpoints"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecglusterfsendpoints">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.glusterfs.endpoints</a></h2>
+<p>endpoints is the endpoint name that details Glusterfs topology. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecglusterfsendpointsnamespace"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecglusterfsendpointsnamespace">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.glusterfs.endpointsNamespace</a></h2>
+<p>endpointsNamespace is the namespace that contains Glusterfs endpoint. If this field is empty, the EndpointNamespace defaults to the same namespace as the bound PVC. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecglusterfspath"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecglusterfspath">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.glusterfs.path</a></h2>
+<p>path is the Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecglusterfsreadonly"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecglusterfsreadonly">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.glusterfs.readOnly</a></h2>
+<p>readOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespechostpath"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespechostpath">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.hostPath</a></h2>
+<p>hostPath represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespechostpathpath"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespechostpathpath">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.hostPath.path</a></h2>
+<p>path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespechostpathtype"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespechostpathtype">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.hostPath.type</a></h2>
+<p>type for HostPath Volume Defaults to “” More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsi"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsi">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.iscsi</a></h2>
+<p>iscsi represents an ISCSI Disk resource that is attached to a kubelet’s host machine and then exposed to the pod. Provisioned by an admin.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsichapauthdiscovery"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsichapauthdiscovery">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.iscsi.chapAuthDiscovery</a></h2>
+<p>chapAuthDiscovery defines whether support iSCSI Discovery CHAP authentication</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsichapauthsession"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsichapauthsession">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.iscsi.chapAuthSession</a></h2>
+<p>chapAuthSession defines whether support iSCSI Session CHAP authentication</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsifstype"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsifstype">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.iscsi.fsType</a></h2>
+<p>fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: “ext4”, “xfs”, “ntfs”. Implicitly inferred to be “ext4” if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsiinitiatorname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsiinitiatorname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.iscsi.initiatorName</a></h2>
+<p>initiatorName is the custom iSCSI Initiator Name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface &lt;target portal&gt;:&lt;volume name&gt; will be created for the connection.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsiiqn"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsiiqn">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.iscsi.iqn</a></h2>
+<p>iqn is Target iSCSI Qualified Name.</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsiiscsiinterface"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsiiscsiinterface">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.iscsi.iscsiInterface</a></h2>
+<p>iscsiInterface is the interface Name that uses an iSCSI transport. Defaults to ‘default’ (tcp).</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsilun"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsilun">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.iscsi.lun</a></h2>
+<p>lun is iSCSI Target Lun number.</p>
+<p><em>Type:</em>
+signed integer</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsiportals"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsiportals">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.iscsi.portals</a></h2>
+<p>portals is the iSCSI Target Portal List. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).</p>
+<p><em>Type:</em>
+null or (list of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsireadonly"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsireadonly">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.iscsi.readOnly</a></h2>
+<p>readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false.</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsisecretref"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsisecretref">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.iscsi.secretRef</a></h2>
+<p>secretRef is the CHAP Secret for iSCSI target and initiator authentication</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsisecretrefname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsisecretrefname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.iscsi.secretRef.name</a></h2>
+<p>name is unique within a namespace to reference a secret resource.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsisecretrefnamespace"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsisecretrefnamespace">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.iscsi.secretRef.namespace</a></h2>
+<p>namespace defines the space within which the secret name must be unique.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsitargetportal"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeciscsitargetportal">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.iscsi.targetPortal</a></h2>
+<p>targetPortal is iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeclocal"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeclocal">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.local</a></h2>
+<p>local represents directly-attached storage with node affinity</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeclocalfstype"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeclocalfstype">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.local.fsType</a></h2>
+<p>fsType is the filesystem type to mount. It applies only when the Path is a block device. Must be a filesystem type supported by the host operating system. Ex. “ext4”, “xfs”, “ntfs”. The default value is to auto-select a filesystem if unspecified.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespeclocalpath"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespeclocalpath">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.local.path</a></h2>
+<p>path of the full path to the volume on the node. It can be either a directory or block device (disk, partition, …).</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecmountoptions"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecmountoptions">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.mountOptions</a></h2>
+<p>mountOptions is the list of mount options, e.g. [“ro”, “soft”]. Not validated - mount will simply fail if one is invalid. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options</p>
+<p><em>Type:</em>
+null or (list of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecnfs"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecnfs">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.nfs</a></h2>
+<p>nfs represents an NFS mount on the host. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecnfspath"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecnfspath">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.nfs.path</a></h2>
+<p>path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecnfsreadonly"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecnfsreadonly">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.nfs.readOnly</a></h2>
+<p>readOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecnfsserver"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecnfsserver">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.nfs.server</a></h2>
+<p>server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinity"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinity">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.nodeAffinity</a></h2>
+<p>nodeAffinity defines constraints that limit what nodes this volume can be accessed from. This field influences the scheduling of pods that use this volume.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinityrequired"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinityrequired">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.nodeAffinity.required</a></h2>
+<p>required specifies hard node constraints that must be met.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinityrequirednodeselectorterms"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinityrequirednodeselectorterms">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.nodeAffinity.required.nodeSelectorTerms</a></h2>
+<p>Required. A list of node selector terms. The terms are ORed.</p>
+<p><em>Type:</em>
+list of (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinityrequirednodeselectortermsmatchexpressions"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinityrequirednodeselectortermsmatchexpressions">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.nodeAffinity.required.nodeSelectorTerms.*.matchExpressions</a></h2>
+<p>A list of node selector requirements by node’s labels.</p>
+<p><em>Type:</em>
+null or (list of (submodule))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinityrequirednodeselectortermsmatchexpressionskey"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinityrequirednodeselectortermsmatchexpressionskey">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.nodeAffinity.required.nodeSelectorTerms.*.matchExpressions.*.key</a></h2>
+<p>The label key that the selector applies to.</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinityrequirednodeselectortermsmatchexpressionsoperator"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinityrequirednodeselectortermsmatchexpressionsoperator">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.nodeAffinity.required.nodeSelectorTerms.*.matchExpressions.*.operator</a></h2>
+<p>Represents a key’s relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinityrequirednodeselectortermsmatchexpressionsvalues"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinityrequirednodeselectortermsmatchexpressionsvalues">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.nodeAffinity.required.nodeSelectorTerms.*.matchExpressions.*.values</a></h2>
+<p>An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.</p>
+<p><em>Type:</em>
+null or (list of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinityrequirednodeselectortermsmatchfields"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinityrequirednodeselectortermsmatchfields">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.nodeAffinity.required.nodeSelectorTerms.*.matchFields</a></h2>
+<p>A list of node selector requirements by node’s fields.</p>
+<p><em>Type:</em>
+null or (list of (submodule))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinityrequirednodeselectortermsmatchfieldskey"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinityrequirednodeselectortermsmatchfieldskey">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.nodeAffinity.required.nodeSelectorTerms.*.matchFields.*.key</a></h2>
+<p>The label key that the selector applies to.</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinityrequirednodeselectortermsmatchfieldsoperator"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinityrequirednodeselectortermsmatchfieldsoperator">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.nodeAffinity.required.nodeSelectorTerms.*.matchFields.*.operator</a></h2>
+<p>Represents a key’s relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinityrequirednodeselectortermsmatchfieldsvalues"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecnodeaffinityrequirednodeselectortermsmatchfieldsvalues">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.nodeAffinity.required.nodeSelectorTerms.*.matchFields.*.values</a></h2>
+<p>An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.</p>
+<p><em>Type:</em>
+null or (list of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecpersistentvolumereclaimpolicy"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecpersistentvolumereclaimpolicy">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.persistentVolumeReclaimPolicy</a></h2>
+<p>persistentVolumeReclaimPolicy defines what happens to a persistent volume when released from its claim. Valid options are Retain (default for manually created PersistentVolumes), Delete (default for dynamically provisioned PersistentVolumes), and Recycle (deprecated). Recycle must be supported by the volume plugin underlying this PersistentVolume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecphotonpersistentdisk"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecphotonpersistentdisk">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.photonPersistentDisk</a></h2>
+<p>photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecphotonpersistentdiskfstype"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecphotonpersistentdiskfstype">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.photonPersistentDisk.fsType</a></h2>
+<p>fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. “ext4”, “xfs”, “ntfs”. Implicitly inferred to be “ext4” if unspecified.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecphotonpersistentdiskpdid"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecphotonpersistentdiskpdid">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.photonPersistentDisk.pdID</a></h2>
+<p>pdID is the ID that identifies Photon Controller persistent disk</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecportworxvolume"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecportworxvolume">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.portworxVolume</a></h2>
+<p>portworxVolume represents a portworx volume attached and mounted on kubelets host machine</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecportworxvolumefstype"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecportworxvolumefstype">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.portworxVolume.fsType</a></h2>
+<p>fSType represents the filesystem type to mount Must be a filesystem type supported by the host operating system. Ex. “ext4”, “xfs”. Implicitly inferred to be “ext4” if unspecified.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecportworxvolumereadonly"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecportworxvolumereadonly">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.portworxVolume.readOnly</a></h2>
+<p>readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecportworxvolumevolumeid"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecportworxvolumevolumeid">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.portworxVolume.volumeID</a></h2>
+<p>volumeID uniquely identifies a Portworx volume</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecquobyte"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecquobyte">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.quobyte</a></h2>
+<p>quobyte represents a Quobyte mount on the host that shares a pod’s lifetime</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecquobytegroup"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecquobytegroup">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.quobyte.group</a></h2>
+<p>group to map volume access to Default is no group</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecquobytereadonly"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecquobytereadonly">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.quobyte.readOnly</a></h2>
+<p>readOnly here will force the Quobyte volume to be mounted with read-only permissions. Defaults to false.</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecquobyteregistry"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecquobyteregistry">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.quobyte.registry</a></h2>
+<p>registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecquobytetenant"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecquobytetenant">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.quobyte.tenant</a></h2>
+<p>tenant owning the given Quobyte volume in the Backend Used with dynamically provisioned Quobyte volumes, value is set by the plugin</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecquobyteuser"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecquobyteuser">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.quobyte.user</a></h2>
+<p>user to map volume access to Defaults to serivceaccount user</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecquobytevolume"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecquobytevolume">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.quobyte.volume</a></h2>
+<p>volume is a string that references an already created Quobyte volume by name.</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbd"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbd">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.rbd</a></h2>
+<p>rbd represents a Rados Block Device mount on the host that shares a pod’s lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbdfstype"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbdfstype">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.rbd.fsType</a></h2>
+<p>fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: “ext4”, “xfs”, “ntfs”. Implicitly inferred to be “ext4” if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbdimage"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbdimage">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.rbd.image</a></h2>
+<p>image is the rados image name. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbdkeyring"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbdkeyring">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.rbd.keyring</a></h2>
+<p>keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbdmonitors"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbdmonitors">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.rbd.monitors</a></h2>
+<p>monitors is a collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</p>
+<p><em>Type:</em>
+list of (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbdpool"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbdpool">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.rbd.pool</a></h2>
+<p>pool is the rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbdreadonly"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbdreadonly">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.rbd.readOnly</a></h2>
+<p>readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbdsecretref"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbdsecretref">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.rbd.secretRef</a></h2>
+<p>secretRef is name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbdsecretrefname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbdsecretrefname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.rbd.secretRef.name</a></h2>
+<p>name is unique within a namespace to reference a secret resource.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbdsecretrefnamespace"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbdsecretrefnamespace">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.rbd.secretRef.namespace</a></h2>
+<p>namespace defines the space within which the secret name must be unique.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbduser"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecrbduser">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.rbd.user</a></h2>
+<p>user is the rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleio"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleio">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.scaleIO</a></h2>
+<p>scaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleiofstype"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleiofstype">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.scaleIO.fsType</a></h2>
+<p>fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. “ext4”, “xfs”, “ntfs”. Default is “xfs”</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleiogateway"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleiogateway">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.scaleIO.gateway</a></h2>
+<p>gateway is the host address of the ScaleIO API Gateway.</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleioprotectiondomain"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleioprotectiondomain">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.scaleIO.protectionDomain</a></h2>
+<p>protectionDomain is the name of the ScaleIO Protection Domain for the configured storage.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleioreadonly"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleioreadonly">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.scaleIO.readOnly</a></h2>
+<p>readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleiosecretref"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleiosecretref">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.scaleIO.secretRef</a></h2>
+<p>secretRef references to the secret for ScaleIO user and other sensitive information. If this is not provided, Login operation will fail.</p>
+<p><em>Type:</em>
+submodule</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleiosecretrefname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleiosecretrefname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.scaleIO.secretRef.name</a></h2>
+<p>name is unique within a namespace to reference a secret resource.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleiosecretrefnamespace"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleiosecretrefnamespace">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.scaleIO.secretRef.namespace</a></h2>
+<p>namespace defines the space within which the secret name must be unique.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleiosslenabled"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleiosslenabled">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.scaleIO.sslEnabled</a></h2>
+<p>sslEnabled is the flag to enable/disable SSL communication with Gateway, default false</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleiostoragemode"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleiostoragemode">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.scaleIO.storageMode</a></h2>
+<p>storageMode indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleiostoragepool"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleiostoragepool">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.scaleIO.storagePool</a></h2>
+<p>storagePool is the ScaleIO Storage Pool associated with the protection domain.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleiosystem"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleiosystem">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.scaleIO.system</a></h2>
+<p>system is the name of the storage system as configured in ScaleIO.</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleiovolumename"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecscaleiovolumename">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.scaleIO.volumeName</a></h2>
+<p>volumeName is the name of a volume already created in the ScaleIO system that is associated with this volume source.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageclassname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageclassname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.storageClassName</a></h2>
+<p>storageClassName is the name of StorageClass to which this persistent volume belongs. Empty value means that this volume does not belong to any StorageClass.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageos"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageos">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.storageos</a></h2>
+<p>storageOS represents a StorageOS volume that is attached to the kubelet’s host machine and mounted into the pod More info: https://examples.k8s.io/volumes/storageos/README.md</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageosfstype"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageosfstype">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.storageos.fsType</a></h2>
+<p>fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. “ext4”, “xfs”, “ntfs”. Implicitly inferred to be “ext4” if unspecified.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageosreadonly"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageosreadonly">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.storageos.readOnly</a></h2>
+<p>readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageossecretref"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageossecretref">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.storageos.secretRef</a></h2>
+<p>secretRef specifies the secret to use for obtaining the StorageOS API credentials.  If not specified, default values will be attempted.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageossecretrefapiversion"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageossecretrefapiversion">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.storageos.secretRef.apiVersion</a></h2>
+<p>API version of the referent.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageossecretreffieldpath"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageossecretreffieldpath">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.storageos.secretRef.fieldPath</a></h2>
+<p>If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: “spec.containers{name}” (where “name” refers to the name of the container that triggered the event) or if no container name is specified “spec.containers[2]” (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageossecretrefkind"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageossecretrefkind">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.storageos.secretRef.kind</a></h2>
+<p>Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageossecretrefname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageossecretrefname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.storageos.secretRef.name</a></h2>
+<p>Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageossecretrefnamespace"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageossecretrefnamespace">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.storageos.secretRef.namespace</a></h2>
+<p>Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageossecretrefresourceversion"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageossecretrefresourceversion">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.storageos.secretRef.resourceVersion</a></h2>
+<p>Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageossecretrefuid"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageossecretrefuid">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.storageos.secretRef.uid</a></h2>
+<p>UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageosvolumename"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageosvolumename">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.storageos.volumeName</a></h2>
+<p>volumeName is the human-readable name of the StorageOS volume.  Volume names are only unique within a namespace.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageosvolumenamespace"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecstorageosvolumenamespace">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.storageos.volumeNamespace</a></h2>
+<p>volumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod’s namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to “default” if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecvolumeattributesclassname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecvolumeattributesclassname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.volumeAttributesClassName</a></h2>
+<p>Name of VolumeAttributesClass to which this persistent volume belongs. Empty value is not allowed. When this field is not set, it indicates that this volume does not belong to any VolumeAttributesClass. This field is mutable and can be changed by the CSI driver after a volume has been updated successfully to a new class. For an unbound PersistentVolume, the volumeAttributesClassName will be matched with unbound PersistentVolumeClaims during the binding process. This is an alpha field and requires enabling VolumeAttributesClass feature.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecvolumemode"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecvolumemode">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.volumeMode</a></h2>
+<p>volumeMode defines if a volume is intended to be used with a formatted filesystem or to remain in raw block state. Value of Filesystem is implied when not included in spec.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecvspherevolume"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecvspherevolume">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.vsphereVolume</a></h2>
+<p>vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecvspherevolumefstype"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecvspherevolumefstype">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.vsphereVolume.fsType</a></h2>
+<p>fsType is filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. “ext4”, “xfs”, “ntfs”. Implicitly inferred to be “ext4” if unspecified.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecvspherevolumestoragepolicyid"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecvspherevolumestoragepolicyid">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.vsphereVolume.storagePolicyID</a></h2>
+<p>storagePolicyID is the storage Policy Based Management (SPBM) profile ID associated with the StoragePolicyName.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecvspherevolumestoragepolicyname"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecvspherevolumestoragepolicyname">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.vsphereVolume.storagePolicyName</a></h2>
+<p>storagePolicyName is the storage Policy Based Management (SPBM) profile name.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourceinlinevolumespecvspherevolumevolumepath"><a class="header" href="#resourcesvolumeattachmentsnamespecsourceinlinevolumespecvspherevolumevolumepath">resources.volumeAttachments.&lt;name&gt;.spec.source.inlineVolumeSpec.vsphereVolume.volumePath</a></h2>
+<p>volumePath is the path that identifies vSphere volume vmdk</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamespecsourcepersistentvolumename"><a class="header" href="#resourcesvolumeattachmentsnamespecsourcepersistentvolumename">resources.volumeAttachments.&lt;name&gt;.spec.source.persistentVolumeName</a></h2>
+<p>persistentVolumeName represents the name of the persistent volume to attach.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamestatus"><a class="header" href="#resourcesvolumeattachmentsnamestatus">resources.volumeAttachments.&lt;name&gt;.status</a></h2>
+<p>status represents status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamestatusattacherror"><a class="header" href="#resourcesvolumeattachmentsnamestatusattacherror">resources.volumeAttachments.&lt;name&gt;.status.attachError</a></h2>
+<p>attachError represents the last error encountered during attach operation, if any. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamestatusattacherrormessage"><a class="header" href="#resourcesvolumeattachmentsnamestatusattacherrormessage">resources.volumeAttachments.&lt;name&gt;.status.attachError.message</a></h2>
+<p>message represents the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamestatusattacherrortime"><a class="header" href="#resourcesvolumeattachmentsnamestatusattacherrortime">resources.volumeAttachments.&lt;name&gt;.status.attachError.time</a></h2>
+<p>time represents the time the error was encountered.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamestatusattached"><a class="header" href="#resourcesvolumeattachmentsnamestatusattached">resources.volumeAttachments.&lt;name&gt;.status.attached</a></h2>
+<p>attached indicates the volume is successfully attached. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.</p>
+<p><em>Type:</em>
+boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamestatusattachmentmetadata"><a class="header" href="#resourcesvolumeattachmentsnamestatusattachmentmetadata">resources.volumeAttachments.&lt;name&gt;.status.attachmentMetadata</a></h2>
+<p>attachmentMetadata is populated with any information returned by the attach operation, upon successful attach, that must be passed into subsequent WaitForAttach or Mount calls. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.</p>
+<p><em>Type:</em>
+null or (attribute set of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamestatusdetacherror"><a class="header" href="#resourcesvolumeattachmentsnamestatusdetacherror">resources.volumeAttachments.&lt;name&gt;.status.detachError</a></h2>
+<p>detachError represents the last error encountered during detach operation, if any. This field must only be set by the entity completing the detach operation, i.e. the external-attacher.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamestatusdetacherrormessage"><a class="header" href="#resourcesvolumeattachmentsnamestatusdetacherrormessage">resources.volumeAttachments.&lt;name&gt;.status.detachError.message</a></h2>
+<p>message represents the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcesvolumeattachmentsnamestatusdetacherrortime"><a class="header" href="#resourcesvolumeattachmentsnamestatusdetacherrortime">resources.volumeAttachments.&lt;name&gt;.status.detachError.time</a></h2>
+<p>time represents the time the error was encountered.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix">/nix/store/7crwg5rg3bmazl8d19rdbxglffqwh5nc-source/helm/generated/v1.30.nix</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../helm/validatingWebhookConfigurations.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../helm/volumeAttributesClasses.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../helm/validatingWebhookConfigurations.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../helm/volumeAttributesClasses.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

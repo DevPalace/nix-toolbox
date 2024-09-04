@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Page not found - nix-toolbox</title>
+        <base href="/">
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="oci.html"><strong aria-hidden="true">1.</strong> OCI</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="oci.html"><strong aria-hidden="true">1.1.</strong> Options Reference</a></li></ol></li><li class="chapter-item expanded "><a href="helm.html"><strong aria-hidden="true">2.</strong> Helm</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="helm/APIServices.html"><strong aria-hidden="true">2.1.</strong> APIServices</a></li><li class="chapter-item expanded "><a href="helm/autoscaling.html"><strong aria-hidden="true">2.2.</strong> autoscaling</a></li><li class="chapter-item expanded "><a href="helm/bindings.html"><strong aria-hidden="true">2.3.</strong> bindings</a></li><li class="chapter-item expanded "><a href="helm/cSIDrivers.html"><strong aria-hidden="true">2.4.</strong> cSIDrivers</a></li><li class="chapter-item expanded "><a href="helm/cSINodes.html"><strong aria-hidden="true">2.5.</strong> cSINodes</a></li><li class="chapter-item expanded "><a href="helm/cSIStorageCapacities.html"><strong aria-hidden="true">2.6.</strong> cSIStorageCapacities</a></li><li class="chapter-item expanded "><a href="helm/certificateSigningRequests.html"><strong aria-hidden="true">2.7.</strong> certificateSigningRequests</a></li><li class="chapter-item expanded "><a href="helm/clusterRoleBindings.html"><strong aria-hidden="true">2.8.</strong> clusterRoleBindings</a></li><li class="chapter-item expanded "><a href="helm/clusterRoles.html"><strong aria-hidden="true">2.9.</strong> clusterRoles</a></li><li class="chapter-item expanded "><a href="helm/clusterTrustBundles.html"><strong aria-hidden="true">2.10.</strong> clusterTrustBundles</a></li><li class="chapter-item expanded "><a href="helm/configMaps.html"><strong aria-hidden="true">2.11.</strong> configMaps</a></li><li class="chapter-item expanded "><a href="helm/controllerRevisions.html"><strong aria-hidden="true">2.12.</strong> controllerRevisions</a></li><li class="chapter-item expanded "><a href="helm/cronJobs.html"><strong aria-hidden="true">2.13.</strong> cronJobs</a></li><li class="chapter-item expanded "><a href="helm/daemonSets.html"><strong aria-hidden="true">2.14.</strong> daemonSets</a></li><li class="chapter-item expanded "><a href="helm/deployments.html"><strong aria-hidden="true">2.15.</strong> deployments</a></li><li class="chapter-item expanded "><a href="helm/endpointSlices.html"><strong aria-hidden="true">2.16.</strong> endpointSlices</a></li><li class="chapter-item expanded "><a href="helm/endpoints.html"><strong aria-hidden="true">2.17.</strong> endpoints</a></li><li class="chapter-item expanded "><a href="helm/events.html"><strong aria-hidden="true">2.18.</strong> events</a></li><li class="chapter-item expanded "><a href="helm/eviction.html"><strong aria-hidden="true">2.19.</strong> eviction</a></li><li class="chapter-item expanded "><a href="helm/flowSchemas.html"><strong aria-hidden="true">2.20.</strong> flowSchemas</a></li><li class="chapter-item expanded "><a href="helm/horizontalPodAutoscalers.html"><strong aria-hidden="true">2.21.</strong> horizontalPodAutoscalers</a></li><li class="chapter-item expanded "><a href="helm/iPAddresses.html"><strong aria-hidden="true">2.22.</strong> iPAddresses</a></li><li class="chapter-item expanded "><a href="helm/ingressClasses.html"><strong aria-hidden="true">2.23.</strong> ingressClasses</a></li><li class="chapter-item expanded "><a href="helm/ingresses.html"><strong aria-hidden="true">2.24.</strong> ingresses</a></li><li class="chapter-item expanded "><a href="helm/jobs.html"><strong aria-hidden="true">2.25.</strong> jobs</a></li><li class="chapter-item expanded "><a href="helm/leases.html"><strong aria-hidden="true">2.26.</strong> leases</a></li><li class="chapter-item expanded "><a href="helm/limitRanges.html"><strong aria-hidden="true">2.27.</strong> limitRanges</a></li><li class="chapter-item expanded "><a href="helm/localSubjectAccessReviews.html"><strong aria-hidden="true">2.28.</strong> localSubjectAccessReviews</a></li><li class="chapter-item expanded "><a href="helm/mutatingWebhookConfigurations.html"><strong aria-hidden="true">2.29.</strong> mutatingWebhookConfigurations</a></li><li class="chapter-item expanded "><a href="helm/namespaces.html"><strong aria-hidden="true">2.30.</strong> namespaces</a></li><li class="chapter-item expanded "><a href="helm/networkPolicies.html"><strong aria-hidden="true">2.31.</strong> networkPolicies</a></li><li class="chapter-item expanded "><a href="helm/nodes.html"><strong aria-hidden="true">2.32.</strong> nodes</a></li><li class="chapter-item expanded "><a href="helm/persistentVolumeClaims.html"><strong aria-hidden="true">2.33.</strong> persistentVolumeClaims</a></li><li class="chapter-item expanded "><a href="helm/persistentVolumes.html"><strong aria-hidden="true">2.34.</strong> persistentVolumes</a></li><li class="chapter-item expanded "><a href="helm/podDisruptionBudgets.html"><strong aria-hidden="true">2.35.</strong> podDisruptionBudgets</a></li><li class="chapter-item expanded "><a href="helm/podSchedulingContexts.html"><strong aria-hidden="true">2.36.</strong> podSchedulingContexts</a></li><li class="chapter-item expanded "><a href="helm/podTemplates.html"><strong aria-hidden="true">2.37.</strong> podTemplates</a></li><li class="chapter-item expanded "><a href="helm/pods.html"><strong aria-hidden="true">2.38.</strong> pods</a></li><li class="chapter-item expanded "><a href="helm/policy.html"><strong aria-hidden="true">2.39.</strong> policy</a></li><li class="chapter-item expanded "><a href="helm/priorityClasses.html"><strong aria-hidden="true">2.40.</strong> priorityClasses</a></li><li class="chapter-item expanded "><a href="helm/priorityLevelConfigurations.html"><strong aria-hidden="true">2.41.</strong> priorityLevelConfigurations</a></li><li class="chapter-item expanded "><a href="helm/replicaSets.html"><strong aria-hidden="true">2.42.</strong> replicaSets</a></li><li class="chapter-item expanded "><a href="helm/replicationControllers.html"><strong aria-hidden="true">2.43.</strong> replicationControllers</a></li><li class="chapter-item expanded "><a href="helm/resourceClaimParameters.html"><strong aria-hidden="true">2.44.</strong> resourceClaimParameters</a></li><li class="chapter-item expanded "><a href="helm/resourceClaimTemplates.html"><strong aria-hidden="true">2.45.</strong> resourceClaimTemplates</a></li><li class="chapter-item expanded "><a href="helm/resourceClaims.html"><strong aria-hidden="true">2.46.</strong> resourceClaims</a></li><li class="chapter-item expanded "><a href="helm/resourceClassParameters.html"><strong aria-hidden="true">2.47.</strong> resourceClassParameters</a></li><li class="chapter-item expanded "><a href="helm/resourceClasses.html"><strong aria-hidden="true">2.48.</strong> resourceClasses</a></li><li class="chapter-item expanded "><a href="helm/resourceQuotas.html"><strong aria-hidden="true">2.49.</strong> resourceQuotas</a></li><li class="chapter-item expanded "><a href="helm/resourceSlices.html"><strong aria-hidden="true">2.50.</strong> resourceSlices</a></li><li class="chapter-item expanded "><a href="helm/roleBindings.html"><strong aria-hidden="true">2.51.</strong> roleBindings</a></li><li class="chapter-item expanded "><a href="helm/roles.html"><strong aria-hidden="true">2.52.</strong> roles</a></li><li class="chapter-item expanded "><a href="helm/runtimeClasses.html"><strong aria-hidden="true">2.53.</strong> runtimeClasses</a></li><li class="chapter-item expanded "><a href="helm/secrets.html"><strong aria-hidden="true">2.54.</strong> secrets</a></li><li class="chapter-item expanded "><a href="helm/selfSubjectAccessReviews.html"><strong aria-hidden="true">2.55.</strong> selfSubjectAccessReviews</a></li><li class="chapter-item expanded "><a href="helm/selfSubjectReviews.html"><strong aria-hidden="true">2.56.</strong> selfSubjectReviews</a></li><li class="chapter-item expanded "><a href="helm/selfSubjectRulesReviews.html"><strong aria-hidden="true">2.57.</strong> selfSubjectRulesReviews</a></li><li class="chapter-item expanded "><a href="helm/serviceAccounts.html"><strong aria-hidden="true">2.58.</strong> serviceAccounts</a></li><li class="chapter-item expanded "><a href="helm/serviceCIDRs.html"><strong aria-hidden="true">2.59.</strong> serviceCIDRs</a></li><li class="chapter-item expanded "><a href="helm/services.html"><strong aria-hidden="true">2.60.</strong> services</a></li><li class="chapter-item expanded "><a href="helm/statefulSets.html"><strong aria-hidden="true">2.61.</strong> statefulSets</a></li><li class="chapter-item expanded "><a href="helm/storageClasses.html"><strong aria-hidden="true">2.62.</strong> storageClasses</a></li><li class="chapter-item expanded "><a href="helm/storageVersionMigrations.html"><strong aria-hidden="true">2.63.</strong> storageVersionMigrations</a></li><li class="chapter-item expanded "><a href="helm/storageVersions.html"><strong aria-hidden="true">2.64.</strong> storageVersions</a></li><li class="chapter-item expanded "><a href="helm/subjectAccessReviews.html"><strong aria-hidden="true">2.65.</strong> subjectAccessReviews</a></li><li class="chapter-item expanded "><a href="helm/token.html"><strong aria-hidden="true">2.66.</strong> token</a></li><li class="chapter-item expanded "><a href="helm/tokenReviews.html"><strong aria-hidden="true">2.67.</strong> tokenReviews</a></li><li class="chapter-item expanded "><a href="helm/validatingAdmissionPolicies.html"><strong aria-hidden="true">2.68.</strong> validatingAdmissionPolicies</a></li><li class="chapter-item expanded "><a href="helm/validatingAdmissionPolicyBindings.html"><strong aria-hidden="true">2.69.</strong> validatingAdmissionPolicyBindings</a></li><li class="chapter-item expanded "><a href="helm/validatingWebhookConfigurations.html"><strong aria-hidden="true">2.70.</strong> validatingWebhookConfigurations</a></li><li class="chapter-item expanded "><a href="helm/volumeAttachments.html"><strong aria-hidden="true">2.71.</strong> volumeAttachments</a></li><li class="chapter-item expanded "><a href="helm/volumeAttributesClasses.html"><strong aria-hidden="true">2.72.</strong> volumeAttributesClasses</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">nix-toolbox</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="document-not-found-404"><a class="header" href="#document-not-found-404">Document not found (404)</a></h1>
+<p>This URL is invalid, sorry. Please use the navigation bar or search to continue.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
