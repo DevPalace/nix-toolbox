@@ -1,0 +1,881 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>persistentVolumeClaims - nix-toolbox</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../oci.html"><strong aria-hidden="true">1.</strong> OCI</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../oci.html"><strong aria-hidden="true">1.1.</strong> Options Reference</a></li></ol></li><li class="chapter-item expanded "><a href="../helm.html"><strong aria-hidden="true">2.</strong> Helm</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../helm/APIServices.html"><strong aria-hidden="true">2.1.</strong> APIServices</a></li><li class="chapter-item expanded "><a href="../helm/autoscaling.html"><strong aria-hidden="true">2.2.</strong> autoscaling</a></li><li class="chapter-item expanded "><a href="../helm/bindings.html"><strong aria-hidden="true">2.3.</strong> bindings</a></li><li class="chapter-item expanded "><a href="../helm/cSIDrivers.html"><strong aria-hidden="true">2.4.</strong> cSIDrivers</a></li><li class="chapter-item expanded "><a href="../helm/cSINodes.html"><strong aria-hidden="true">2.5.</strong> cSINodes</a></li><li class="chapter-item expanded "><a href="../helm/cSIStorageCapacities.html"><strong aria-hidden="true">2.6.</strong> cSIStorageCapacities</a></li><li class="chapter-item expanded "><a href="../helm/certificateSigningRequests.html"><strong aria-hidden="true">2.7.</strong> certificateSigningRequests</a></li><li class="chapter-item expanded "><a href="../helm/clusterRoleBindings.html"><strong aria-hidden="true">2.8.</strong> clusterRoleBindings</a></li><li class="chapter-item expanded "><a href="../helm/clusterRoles.html"><strong aria-hidden="true">2.9.</strong> clusterRoles</a></li><li class="chapter-item expanded "><a href="../helm/clusterTrustBundles.html"><strong aria-hidden="true">2.10.</strong> clusterTrustBundles</a></li><li class="chapter-item expanded "><a href="../helm/configMaps.html"><strong aria-hidden="true">2.11.</strong> configMaps</a></li><li class="chapter-item expanded "><a href="../helm/controllerRevisions.html"><strong aria-hidden="true">2.12.</strong> controllerRevisions</a></li><li class="chapter-item expanded "><a href="../helm/cronJobs.html"><strong aria-hidden="true">2.13.</strong> cronJobs</a></li><li class="chapter-item expanded "><a href="../helm/daemonSets.html"><strong aria-hidden="true">2.14.</strong> daemonSets</a></li><li class="chapter-item expanded "><a href="../helm/deployments.html"><strong aria-hidden="true">2.15.</strong> deployments</a></li><li class="chapter-item expanded "><a href="../helm/endpointSlices.html"><strong aria-hidden="true">2.16.</strong> endpointSlices</a></li><li class="chapter-item expanded "><a href="../helm/endpoints.html"><strong aria-hidden="true">2.17.</strong> endpoints</a></li><li class="chapter-item expanded "><a href="../helm/events.html"><strong aria-hidden="true">2.18.</strong> events</a></li><li class="chapter-item expanded "><a href="../helm/eviction.html"><strong aria-hidden="true">2.19.</strong> eviction</a></li><li class="chapter-item expanded "><a href="../helm/flowSchemas.html"><strong aria-hidden="true">2.20.</strong> flowSchemas</a></li><li class="chapter-item expanded "><a href="../helm/horizontalPodAutoscalers.html"><strong aria-hidden="true">2.21.</strong> horizontalPodAutoscalers</a></li><li class="chapter-item expanded "><a href="../helm/iPAddresses.html"><strong aria-hidden="true">2.22.</strong> iPAddresses</a></li><li class="chapter-item expanded "><a href="../helm/ingressClasses.html"><strong aria-hidden="true">2.23.</strong> ingressClasses</a></li><li class="chapter-item expanded "><a href="../helm/ingresses.html"><strong aria-hidden="true">2.24.</strong> ingresses</a></li><li class="chapter-item expanded "><a href="../helm/jobs.html"><strong aria-hidden="true">2.25.</strong> jobs</a></li><li class="chapter-item expanded "><a href="../helm/leases.html"><strong aria-hidden="true">2.26.</strong> leases</a></li><li class="chapter-item expanded "><a href="../helm/limitRanges.html"><strong aria-hidden="true">2.27.</strong> limitRanges</a></li><li class="chapter-item expanded "><a href="../helm/localSubjectAccessReviews.html"><strong aria-hidden="true">2.28.</strong> localSubjectAccessReviews</a></li><li class="chapter-item expanded "><a href="../helm/mutatingWebhookConfigurations.html"><strong aria-hidden="true">2.29.</strong> mutatingWebhookConfigurations</a></li><li class="chapter-item expanded "><a href="../helm/namespaces.html"><strong aria-hidden="true">2.30.</strong> namespaces</a></li><li class="chapter-item expanded "><a href="../helm/networkPolicies.html"><strong aria-hidden="true">2.31.</strong> networkPolicies</a></li><li class="chapter-item expanded "><a href="../helm/nodes.html"><strong aria-hidden="true">2.32.</strong> nodes</a></li><li class="chapter-item expanded "><a href="../helm/persistentVolumeClaims.html" class="active"><strong aria-hidden="true">2.33.</strong> persistentVolumeClaims</a></li><li class="chapter-item expanded "><a href="../helm/persistentVolumes.html"><strong aria-hidden="true">2.34.</strong> persistentVolumes</a></li><li class="chapter-item expanded "><a href="../helm/podDisruptionBudgets.html"><strong aria-hidden="true">2.35.</strong> podDisruptionBudgets</a></li><li class="chapter-item expanded "><a href="../helm/podSchedulingContexts.html"><strong aria-hidden="true">2.36.</strong> podSchedulingContexts</a></li><li class="chapter-item expanded "><a href="../helm/podTemplates.html"><strong aria-hidden="true">2.37.</strong> podTemplates</a></li><li class="chapter-item expanded "><a href="../helm/pods.html"><strong aria-hidden="true">2.38.</strong> pods</a></li><li class="chapter-item expanded "><a href="../helm/policy.html"><strong aria-hidden="true">2.39.</strong> policy</a></li><li class="chapter-item expanded "><a href="../helm/priorityClasses.html"><strong aria-hidden="true">2.40.</strong> priorityClasses</a></li><li class="chapter-item expanded "><a href="../helm/priorityLevelConfigurations.html"><strong aria-hidden="true">2.41.</strong> priorityLevelConfigurations</a></li><li class="chapter-item expanded "><a href="../helm/replicaSets.html"><strong aria-hidden="true">2.42.</strong> replicaSets</a></li><li class="chapter-item expanded "><a href="../helm/replicationControllers.html"><strong aria-hidden="true">2.43.</strong> replicationControllers</a></li><li class="chapter-item expanded "><a href="../helm/resourceClaimParameters.html"><strong aria-hidden="true">2.44.</strong> resourceClaimParameters</a></li><li class="chapter-item expanded "><a href="../helm/resourceClaimTemplates.html"><strong aria-hidden="true">2.45.</strong> resourceClaimTemplates</a></li><li class="chapter-item expanded "><a href="../helm/resourceClaims.html"><strong aria-hidden="true">2.46.</strong> resourceClaims</a></li><li class="chapter-item expanded "><a href="../helm/resourceClassParameters.html"><strong aria-hidden="true">2.47.</strong> resourceClassParameters</a></li><li class="chapter-item expanded "><a href="../helm/resourceClasses.html"><strong aria-hidden="true">2.48.</strong> resourceClasses</a></li><li class="chapter-item expanded "><a href="../helm/resourceQuotas.html"><strong aria-hidden="true">2.49.</strong> resourceQuotas</a></li><li class="chapter-item expanded "><a href="../helm/resourceSlices.html"><strong aria-hidden="true">2.50.</strong> resourceSlices</a></li><li class="chapter-item expanded "><a href="../helm/roleBindings.html"><strong aria-hidden="true">2.51.</strong> roleBindings</a></li><li class="chapter-item expanded "><a href="../helm/roles.html"><strong aria-hidden="true">2.52.</strong> roles</a></li><li class="chapter-item expanded "><a href="../helm/runtimeClasses.html"><strong aria-hidden="true">2.53.</strong> runtimeClasses</a></li><li class="chapter-item expanded "><a href="../helm/secrets.html"><strong aria-hidden="true">2.54.</strong> secrets</a></li><li class="chapter-item expanded "><a href="../helm/selfSubjectAccessReviews.html"><strong aria-hidden="true">2.55.</strong> selfSubjectAccessReviews</a></li><li class="chapter-item expanded "><a href="../helm/selfSubjectReviews.html"><strong aria-hidden="true">2.56.</strong> selfSubjectReviews</a></li><li class="chapter-item expanded "><a href="../helm/selfSubjectRulesReviews.html"><strong aria-hidden="true">2.57.</strong> selfSubjectRulesReviews</a></li><li class="chapter-item expanded "><a href="../helm/serviceAccounts.html"><strong aria-hidden="true">2.58.</strong> serviceAccounts</a></li><li class="chapter-item expanded "><a href="../helm/serviceCIDRs.html"><strong aria-hidden="true">2.59.</strong> serviceCIDRs</a></li><li class="chapter-item expanded "><a href="../helm/services.html"><strong aria-hidden="true">2.60.</strong> services</a></li><li class="chapter-item expanded "><a href="../helm/statefulSets.html"><strong aria-hidden="true">2.61.</strong> statefulSets</a></li><li class="chapter-item expanded "><a href="../helm/storageClasses.html"><strong aria-hidden="true">2.62.</strong> storageClasses</a></li><li class="chapter-item expanded "><a href="../helm/storageVersionMigrations.html"><strong aria-hidden="true">2.63.</strong> storageVersionMigrations</a></li><li class="chapter-item expanded "><a href="../helm/storageVersions.html"><strong aria-hidden="true">2.64.</strong> storageVersions</a></li><li class="chapter-item expanded "><a href="../helm/subjectAccessReviews.html"><strong aria-hidden="true">2.65.</strong> subjectAccessReviews</a></li><li class="chapter-item expanded "><a href="../helm/token.html"><strong aria-hidden="true">2.66.</strong> token</a></li><li class="chapter-item expanded "><a href="../helm/tokenReviews.html"><strong aria-hidden="true">2.67.</strong> tokenReviews</a></li><li class="chapter-item expanded "><a href="../helm/validatingAdmissionPolicies.html"><strong aria-hidden="true">2.68.</strong> validatingAdmissionPolicies</a></li><li class="chapter-item expanded "><a href="../helm/validatingAdmissionPolicyBindings.html"><strong aria-hidden="true">2.69.</strong> validatingAdmissionPolicyBindings</a></li><li class="chapter-item expanded "><a href="../helm/validatingWebhookConfigurations.html"><strong aria-hidden="true">2.70.</strong> validatingWebhookConfigurations</a></li><li class="chapter-item expanded "><a href="../helm/volumeAttachments.html"><strong aria-hidden="true">2.71.</strong> volumeAttachments</a></li><li class="chapter-item expanded "><a href="../helm/volumeAttributesClasses.html"><strong aria-hidden="true">2.72.</strong> volumeAttributesClasses</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                    </div>
+
+                    <h1 class="menu-title">nix-toolbox</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="resourcespersistentvolumeclaims"><a class="header" href="#resourcespersistentvolumeclaims">resources.persistentVolumeClaims</a></h2>
+<p>PersistentVolumeClaim is a user’s request for and claim to a persistent volume</p>
+<p><em>Type:</em>
+attribute set of (submodule)</p>
+<p><em>Default:</em>
+<code>{ }</code></p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnameapiversion"><a class="header" href="#resourcespersistentvolumeclaimsnameapiversion">resources.persistentVolumeClaims.&lt;name&gt;.apiVersion</a></h2>
+<p>APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamekind"><a class="header" href="#resourcespersistentvolumeclaimsnamekind">resources.persistentVolumeClaims.&lt;name&gt;.kind</a></h2>
+<p>Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadata"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadata">resources.persistentVolumeClaims.&lt;name&gt;.metadata</a></h2>
+<p>Standard object’s metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadataannotations"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadataannotations">resources.persistentVolumeClaims.&lt;name&gt;.metadata.annotations</a></h2>
+<p>Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations</p>
+<p><em>Type:</em>
+null or (attribute set of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadatacreationtimestamp"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadatacreationtimestamp">resources.persistentVolumeClaims.&lt;name&gt;.metadata.creationTimestamp</a></h2>
+<p>CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC.</p>
+<p>Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadatadeletiongraceperiodseconds"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadatadeletiongraceperiodseconds">resources.persistentVolumeClaims.&lt;name&gt;.metadata.deletionGracePeriodSeconds</a></h2>
+<p>Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.</p>
+<p><em>Type:</em>
+null or signed integer</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadatadeletiontimestamp"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadatadeletiontimestamp">resources.persistentVolumeClaims.&lt;name&gt;.metadata.deletionTimestamp</a></h2>
+<p>DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested.</p>
+<p>Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadatafinalizers"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadatafinalizers">resources.persistentVolumeClaims.&lt;name&gt;.metadata.finalizers</a></h2>
+<p>Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.</p>
+<p><em>Type:</em>
+null or (list of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadatageneratename"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadatageneratename">resources.persistentVolumeClaims.&lt;name&gt;.metadata.generateName</a></h2>
+<p>GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.</p>
+<p>If this field is specified and the generated name exists, the server will return a 409.</p>
+<p>Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadatageneration"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadatageneration">resources.persistentVolumeClaims.&lt;name&gt;.metadata.generation</a></h2>
+<p>A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.</p>
+<p><em>Type:</em>
+null or signed integer</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadatalabels"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadatalabels">resources.persistentVolumeClaims.&lt;name&gt;.metadata.labels</a></h2>
+<p>Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels</p>
+<p><em>Type:</em>
+null or (attribute set of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadatamanagedfields"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadatamanagedfields">resources.persistentVolumeClaims.&lt;name&gt;.metadata.managedFields</a></h2>
+<p>ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn’t need to set or understand this field. A workflow can be the user’s name, a controller’s name, or the name of a specific apply path like “ci-cd”. The set of fields is always in the version that the workflow used when modifying the object.</p>
+<p><em>Type:</em>
+null or (list of (submodule))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadatamanagedfieldsapiversion"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadatamanagedfieldsapiversion">resources.persistentVolumeClaims.&lt;name&gt;.metadata.managedFields.*.apiVersion</a></h2>
+<p>APIVersion defines the version of this resource that this field set applies to. The format is “group/version” just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadatamanagedfieldsfieldstype"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadatamanagedfieldsfieldstype">resources.persistentVolumeClaims.&lt;name&gt;.metadata.managedFields.*.fieldsType</a></h2>
+<p>FieldsType is the discriminator for the different fields format and version. There is currently only one possible value: “FieldsV1”</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadatamanagedfieldsfieldsv1"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadatamanagedfieldsfieldsv1">resources.persistentVolumeClaims.&lt;name&gt;.metadata.managedFields.*.fieldsV1</a></h2>
+<p>FieldsV1 holds the first JSON version format as described in the “FieldsV1” type.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadatamanagedfieldsmanager"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadatamanagedfieldsmanager">resources.persistentVolumeClaims.&lt;name&gt;.metadata.managedFields.*.manager</a></h2>
+<p>Manager is an identifier of the workflow managing these fields.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadatamanagedfieldsoperation"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadatamanagedfieldsoperation">resources.persistentVolumeClaims.&lt;name&gt;.metadata.managedFields.*.operation</a></h2>
+<p>Operation is the type of operation which lead to this ManagedFieldsEntry being created. The only valid values for this field are ‘Apply’ and ‘Update’.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadatamanagedfieldssubresource"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadatamanagedfieldssubresource">resources.persistentVolumeClaims.&lt;name&gt;.metadata.managedFields.*.subresource</a></h2>
+<p>Subresource is the name of the subresource used to update that object, or empty string if the object was updated through the main resource. The value of this field is used to distinguish between managers, even if they share the same name. For example, a status update will be distinct from a regular update using the same manager name. Note that the APIVersion field is not related to the Subresource field and it always corresponds to the version of the main resource.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadatamanagedfieldstime"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadatamanagedfieldstime">resources.persistentVolumeClaims.&lt;name&gt;.metadata.managedFields.*.time</a></h2>
+<p>Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadataname"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadataname">resources.persistentVolumeClaims.&lt;name&gt;.metadata.name</a></h2>
+<p>Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadatanamespace"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadatanamespace">resources.persistentVolumeClaims.&lt;name&gt;.metadata.namespace</a></h2>
+<p>Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the “default” namespace, but “default” is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.</p>
+<p>Must be a DNS_LABEL. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadataownerreferences"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadataownerreferences">resources.persistentVolumeClaims.&lt;name&gt;.metadata.ownerReferences</a></h2>
+<p>List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.</p>
+<p><em>Type:</em>
+null or (attribute set of (submodule) or list of (submodule))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadataownerreferencesname_priority"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadataownerreferencesname_priority">resources.persistentVolumeClaims.&lt;name&gt;.metadata.ownerReferences.&lt;name&gt;._priority</a></h2>
+<p>This option has no description.</p>
+<p><em>Type:</em>
+null or signed integer</p>
+<p><em>Default:</em>
+<code>null</code></p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadataownerreferencesnameapiversion"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadataownerreferencesnameapiversion">resources.persistentVolumeClaims.&lt;name&gt;.metadata.ownerReferences.&lt;name&gt;.apiVersion</a></h2>
+<p>API version of the referent.</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadataownerreferencesnameblockownerdeletion"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadataownerreferencesnameblockownerdeletion">resources.persistentVolumeClaims.&lt;name&gt;.metadata.ownerReferences.&lt;name&gt;.blockOwnerDeletion</a></h2>
+<p>If true, AND if the owner has the “foregroundDeletion” finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. See https://kubernetes.io/docs/concepts/architecture/garbage-collection/#foreground-deletion for how the garbage collector interacts with this field and enforces the foreground deletion. Defaults to false. To set this field, a user needs “delete” permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadataownerreferencesnamecontroller"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadataownerreferencesnamecontroller">resources.persistentVolumeClaims.&lt;name&gt;.metadata.ownerReferences.&lt;name&gt;.controller</a></h2>
+<p>If true, this reference points to the managing controller.</p>
+<p><em>Type:</em>
+null or boolean</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadataownerreferencesnamekind"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadataownerreferencesnamekind">resources.persistentVolumeClaims.&lt;name&gt;.metadata.ownerReferences.&lt;name&gt;.kind</a></h2>
+<p>Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadataownerreferencesnamename"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadataownerreferencesnamename">resources.persistentVolumeClaims.&lt;name&gt;.metadata.ownerReferences.&lt;name&gt;.name</a></h2>
+<p>Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadataownerreferencesnameuid"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadataownerreferencesnameuid">resources.persistentVolumeClaims.&lt;name&gt;.metadata.ownerReferences.&lt;name&gt;.uid</a></h2>
+<p>UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadataresourceversion"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadataresourceversion">resources.persistentVolumeClaims.&lt;name&gt;.metadata.resourceVersion</a></h2>
+<p>An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.</p>
+<p>Populated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadataselflink"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadataselflink">resources.persistentVolumeClaims.&lt;name&gt;.metadata.selfLink</a></h2>
+<p>Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamemetadatauid"><a class="header" href="#resourcespersistentvolumeclaimsnamemetadatauid">resources.persistentVolumeClaims.&lt;name&gt;.metadata.uid</a></h2>
+<p>UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.</p>
+<p>Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespec"><a class="header" href="#resourcespersistentvolumeclaimsnamespec">resources.persistentVolumeClaims.&lt;name&gt;.spec</a></h2>
+<p>spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecaccessmodes"><a class="header" href="#resourcespersistentvolumeclaimsnamespecaccessmodes">resources.persistentVolumeClaims.&lt;name&gt;.spec.accessModes</a></h2>
+<p>accessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1</p>
+<p><em>Type:</em>
+null or (list of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecdatasource"><a class="header" href="#resourcespersistentvolumeclaimsnamespecdatasource">resources.persistentVolumeClaims.&lt;name&gt;.spec.dataSource</a></h2>
+<p>dataSource field can be used to specify either: * An existing VolumeSnapshot object (snapshot.storage.k8s.io/VolumeSnapshot) * An existing PVC (PersistentVolumeClaim) If the provisioner or an external controller can support the specified data source, it will create a new volume based on the contents of the specified data source. When the AnyVolumeDataSource feature gate is enabled, dataSource contents will be copied to dataSourceRef, and dataSourceRef contents will be copied to dataSource when dataSourceRef.namespace is not specified. If the namespace is specified, then dataSourceRef will not be copied to dataSource.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecdatasourceapigroup"><a class="header" href="#resourcespersistentvolumeclaimsnamespecdatasourceapigroup">resources.persistentVolumeClaims.&lt;name&gt;.spec.dataSource.apiGroup</a></h2>
+<p>APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecdatasourcekind"><a class="header" href="#resourcespersistentvolumeclaimsnamespecdatasourcekind">resources.persistentVolumeClaims.&lt;name&gt;.spec.dataSource.kind</a></h2>
+<p>Kind is the type of resource being referenced</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecdatasourcename"><a class="header" href="#resourcespersistentvolumeclaimsnamespecdatasourcename">resources.persistentVolumeClaims.&lt;name&gt;.spec.dataSource.name</a></h2>
+<p>Name is the name of resource being referenced</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecdatasourceref"><a class="header" href="#resourcespersistentvolumeclaimsnamespecdatasourceref">resources.persistentVolumeClaims.&lt;name&gt;.spec.dataSourceRef</a></h2>
+<p>dataSourceRef specifies the object from which to populate the volume with data, if a non-empty volume is desired. This may be any object from a non-empty API group (non core object) or a PersistentVolumeClaim object. When this field is specified, volume binding will only succeed if the type of the specified object matches some installed volume populator or dynamic provisioner. This field will replace the functionality of the dataSource field and as such if both fields are non-empty, they must have the same value. For backwards compatibility, when namespace isn’t specified in dataSourceRef, both fields (dataSource and dataSourceRef) will be set to the same value automatically if one of them is empty and the other is non-empty. When namespace is specified in dataSourceRef, dataSource isn’t set to the same value and must be empty. There are three important differences between dataSource and dataSourceRef: * While dataSource only allows two specific types of objects, dataSourceRef
+allows any non-core object, as well as PersistentVolumeClaim objects.</p>
+<ul>
+<li>While dataSource ignores disallowed values (dropping them), dataSourceRef
+preserves all values, and generates an error if a disallowed value is
+specified.</li>
+<li>While dataSource only allows local objects, dataSourceRef allows objects
+in any namespaces.
+(Beta) Using this field requires the AnyVolumeDataSource feature gate to be enabled. (Alpha) Using the namespace field of dataSourceRef requires the CrossNamespaceVolumeDataSource feature gate to be enabled.</li>
+</ul>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecdatasourcerefapigroup"><a class="header" href="#resourcespersistentvolumeclaimsnamespecdatasourcerefapigroup">resources.persistentVolumeClaims.&lt;name&gt;.spec.dataSourceRef.apiGroup</a></h2>
+<p>APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecdatasourcerefkind"><a class="header" href="#resourcespersistentvolumeclaimsnamespecdatasourcerefkind">resources.persistentVolumeClaims.&lt;name&gt;.spec.dataSourceRef.kind</a></h2>
+<p>Kind is the type of resource being referenced</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecdatasourcerefname"><a class="header" href="#resourcespersistentvolumeclaimsnamespecdatasourcerefname">resources.persistentVolumeClaims.&lt;name&gt;.spec.dataSourceRef.name</a></h2>
+<p>Name is the name of resource being referenced</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecdatasourcerefnamespace"><a class="header" href="#resourcespersistentvolumeclaimsnamespecdatasourcerefnamespace">resources.persistentVolumeClaims.&lt;name&gt;.spec.dataSourceRef.namespace</a></h2>
+<p>Namespace is the namespace of resource being referenced Note that when a namespace is specified, a gateway.networking.k8s.io/ReferenceGrant object is required in the referent namespace to allow that namespace’s owner to accept the reference. See the ReferenceGrant documentation for details. (Alpha) This field requires the CrossNamespaceVolumeDataSource feature gate to be enabled.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecresources"><a class="header" href="#resourcespersistentvolumeclaimsnamespecresources">resources.persistentVolumeClaims.&lt;name&gt;.spec.resources</a></h2>
+<p>resources represents the minimum resources the volume should have. If RecoverVolumeExpansionFailure feature is enabled users are allowed to specify resource requirements that are lower than previous value but must still be higher than capacity recorded in the status field of the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecresourceslimits"><a class="header" href="#resourcespersistentvolumeclaimsnamespecresourceslimits">resources.persistentVolumeClaims.&lt;name&gt;.spec.resources.limits</a></h2>
+<p>Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/</p>
+<p><em>Type:</em>
+null or (attribute set of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecresourcesrequests"><a class="header" href="#resourcespersistentvolumeclaimsnamespecresourcesrequests">resources.persistentVolumeClaims.&lt;name&gt;.spec.resources.requests</a></h2>
+<p>Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/</p>
+<p><em>Type:</em>
+null or (attribute set of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecselector"><a class="header" href="#resourcespersistentvolumeclaimsnamespecselector">resources.persistentVolumeClaims.&lt;name&gt;.spec.selector</a></h2>
+<p>selector is a label query over volumes to consider for binding.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecselectormatchexpressions"><a class="header" href="#resourcespersistentvolumeclaimsnamespecselectormatchexpressions">resources.persistentVolumeClaims.&lt;name&gt;.spec.selector.matchExpressions</a></h2>
+<p>matchExpressions is a list of label selector requirements. The requirements are ANDed.</p>
+<p><em>Type:</em>
+null or (list of (submodule))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecselectormatchexpressionskey"><a class="header" href="#resourcespersistentvolumeclaimsnamespecselectormatchexpressionskey">resources.persistentVolumeClaims.&lt;name&gt;.spec.selector.matchExpressions.*.key</a></h2>
+<p>key is the label key that the selector applies to.</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecselectormatchexpressionsoperator"><a class="header" href="#resourcespersistentvolumeclaimsnamespecselectormatchexpressionsoperator">resources.persistentVolumeClaims.&lt;name&gt;.spec.selector.matchExpressions.*.operator</a></h2>
+<p>operator represents a key’s relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.</p>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecselectormatchexpressionsvalues"><a class="header" href="#resourcespersistentvolumeclaimsnamespecselectormatchexpressionsvalues">resources.persistentVolumeClaims.&lt;name&gt;.spec.selector.matchExpressions.*.values</a></h2>
+<p>values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.</p>
+<p><em>Type:</em>
+null or (list of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecselectormatchlabels"><a class="header" href="#resourcespersistentvolumeclaimsnamespecselectormatchlabels">resources.persistentVolumeClaims.&lt;name&gt;.spec.selector.matchLabels</a></h2>
+<p>matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is “key”, the operator is “In”, and the values array contains only “value”. The requirements are ANDed.</p>
+<p><em>Type:</em>
+null or (attribute set of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecstorageclassname"><a class="header" href="#resourcespersistentvolumeclaimsnamespecstorageclassname">resources.persistentVolumeClaims.&lt;name&gt;.spec.storageClassName</a></h2>
+<p>storageClassName is the name of the StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecvolumeattributesclassname"><a class="header" href="#resourcespersistentvolumeclaimsnamespecvolumeattributesclassname">resources.persistentVolumeClaims.&lt;name&gt;.spec.volumeAttributesClassName</a></h2>
+<p>volumeAttributesClassName may be used to set the VolumeAttributesClass used by this claim. If specified, the CSI driver will create or update the volume with the attributes defined in the corresponding VolumeAttributesClass. This has a different purpose than storageClassName, it can be changed after the claim is created. An empty string value means that no VolumeAttributesClass will be applied to the claim but it’s not allowed to reset this field to empty string once it is set. If unspecified and the PersistentVolumeClaim is unbound, the default VolumeAttributesClass will be set by the persistentvolume controller if it exists. If the resource referred to by volumeAttributesClass does not exist, this PersistentVolumeClaim will be set to a Pending state, as reflected by the modifyVolumeStatus field, until such as a resource exists. More info: https://kubernetes.io/docs/concepts/storage/volume-attributes-classes/ (Alpha) Using this field requires the VolumeAttributesClass feature gate to be enabled.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecvolumemode"><a class="header" href="#resourcespersistentvolumeclaimsnamespecvolumemode">resources.persistentVolumeClaims.&lt;name&gt;.spec.volumeMode</a></h2>
+<p>volumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when not included in claim spec.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamespecvolumename"><a class="header" href="#resourcespersistentvolumeclaimsnamespecvolumename">resources.persistentVolumeClaims.&lt;name&gt;.spec.volumeName</a></h2>
+<p>volumeName is the binding reference to the PersistentVolume backing this claim.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamestatus"><a class="header" href="#resourcespersistentvolumeclaimsnamestatus">resources.persistentVolumeClaims.&lt;name&gt;.status</a></h2>
+<p>status represents the current information/status of a persistent volume claim. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamestatusaccessmodes"><a class="header" href="#resourcespersistentvolumeclaimsnamestatusaccessmodes">resources.persistentVolumeClaims.&lt;name&gt;.status.accessModes</a></h2>
+<p>accessModes contains the actual access modes the volume backing the PVC has. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1</p>
+<p><em>Type:</em>
+null or (list of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamestatusallocatedresourcestatuses"><a class="header" href="#resourcespersistentvolumeclaimsnamestatusallocatedresourcestatuses">resources.persistentVolumeClaims.&lt;name&gt;.status.allocatedResourceStatuses</a></h2>
+<p>allocatedResourceStatuses stores status of resource being resized for the given PVC. Key names follow standard Kubernetes label syntax. Valid values are either:
+* Un-prefixed keys:</p>
+<ul>
+<li>storage - the capacity of the volume.
+* Custom resources must use implementation-defined prefixed names such as “example.com/my-custom-resource”
+Apart from above values - keys that are unprefixed or have kubernetes.io prefix are considered reserved and hence may not be used.</li>
+</ul>
+<p>ClaimResourceStatus can be in any of following states:</p>
+<ul>
+<li>ControllerResizeInProgress:
+State set when resize controller starts resizing the volume in control-plane.</li>
+<li>ControllerResizeFailed:
+State set when resize has failed in resize controller with a terminal error.</li>
+<li>NodeResizePending:
+State set when resize controller has finished resizing the volume but further resizing of
+volume is needed on the node.</li>
+<li>NodeResizeInProgress:
+State set when kubelet starts resizing the volume.</li>
+<li>NodeResizeFailed:
+State set when resizing has failed in kubelet with a terminal error. Transient errors don’t set
+NodeResizeFailed.
+For example: if expanding a PVC for more capacity - this field can be one of the following states:</li>
+<li>pvc.status.allocatedResourceStatus[‘storage’] = “ControllerResizeInProgress”</li>
+<li>pvc.status.allocatedResourceStatus[‘storage’] = “ControllerResizeFailed”</li>
+<li>pvc.status.allocatedResourceStatus[‘storage’] = “NodeResizePending”</li>
+<li>pvc.status.allocatedResourceStatus[‘storage’] = “NodeResizeInProgress”</li>
+<li>pvc.status.allocatedResourceStatus[‘storage’] = “NodeResizeFailed”
+When this field is not set, it means that no resize operation is in progress for the given PVC.</li>
+</ul>
+<p>A controller that receives PVC update with previously unknown resourceName or ClaimResourceStatus should ignore the update for the purpose it was designed. For example - a controller that only is responsible for resizing capacity of the volume, should ignore PVC updates that change other valid resources associated with PVC.</p>
+<p>This is an alpha field and requires enabling RecoverVolumeExpansionFailure feature.</p>
+<p><em>Type:</em>
+null or (attribute set of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamestatusallocatedresources"><a class="header" href="#resourcespersistentvolumeclaimsnamestatusallocatedresources">resources.persistentVolumeClaims.&lt;name&gt;.status.allocatedResources</a></h2>
+<p>allocatedResources tracks the resources allocated to a PVC including its capacity. Key names follow standard Kubernetes label syntax. Valid values are either:
+* Un-prefixed keys:</p>
+<ul>
+<li>storage - the capacity of the volume.
+* Custom resources must use implementation-defined prefixed names such as “example.com/my-custom-resource”
+Apart from above values - keys that are unprefixed or have kubernetes.io prefix are considered reserved and hence may not be used.</li>
+</ul>
+<p>Capacity reported here may be larger than the actual capacity when a volume expansion operation is requested. For storage quota, the larger value from allocatedResources and PVC.spec.resources is used. If allocatedResources is not set, PVC.spec.resources alone is used for quota calculation. If a volume expansion capacity request is lowered, allocatedResources is only lowered if there are no expansion operations in progress and if the actual volume capacity is equal or lower than the requested capacity.</p>
+<p>A controller that receives PVC update with previously unknown resourceName should ignore the update for the purpose it was designed. For example - a controller that only is responsible for resizing capacity of the volume, should ignore PVC updates that change other valid resources associated with PVC.</p>
+<p>This is an alpha field and requires enabling RecoverVolumeExpansionFailure feature.</p>
+<p><em>Type:</em>
+null or (attribute set of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamestatuscapacity"><a class="header" href="#resourcespersistentvolumeclaimsnamestatuscapacity">resources.persistentVolumeClaims.&lt;name&gt;.status.capacity</a></h2>
+<p>capacity represents the actual resources of the underlying volume.</p>
+<p><em>Type:</em>
+null or (attribute set of (string))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamestatusconditions"><a class="header" href="#resourcespersistentvolumeclaimsnamestatusconditions">resources.persistentVolumeClaims.&lt;name&gt;.status.conditions</a></h2>
+<p>conditions is the current Condition of persistent volume claim. If underlying persistent volume is being resized then the Condition will be set to ‘Resizing’.</p>
+<p><em>Type:</em>
+null or (attribute set of (submodule) or list of (submodule))</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamestatusconditionsname_priority"><a class="header" href="#resourcespersistentvolumeclaimsnamestatusconditionsname_priority">resources.persistentVolumeClaims.&lt;name&gt;.status.conditions.&lt;name&gt;._priority</a></h2>
+<p>This option has no description.</p>
+<p><em>Type:</em>
+null or signed integer</p>
+<p><em>Default:</em>
+<code>null</code></p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamestatusconditionsnamelastprobetime"><a class="header" href="#resourcespersistentvolumeclaimsnamestatusconditionsnamelastprobetime">resources.persistentVolumeClaims.&lt;name&gt;.status.conditions.&lt;name&gt;.lastProbeTime</a></h2>
+<p>lastProbeTime is the time we probed the condition.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamestatusconditionsnamelasttransitiontime"><a class="header" href="#resourcespersistentvolumeclaimsnamestatusconditionsnamelasttransitiontime">resources.persistentVolumeClaims.&lt;name&gt;.status.conditions.&lt;name&gt;.lastTransitionTime</a></h2>
+<p>lastTransitionTime is the time the condition transitioned from one status to another.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamestatusconditionsnamemessage"><a class="header" href="#resourcespersistentvolumeclaimsnamestatusconditionsnamemessage">resources.persistentVolumeClaims.&lt;name&gt;.status.conditions.&lt;name&gt;.message</a></h2>
+<p>message is the human-readable message indicating details about last transition.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamestatusconditionsnamereason"><a class="header" href="#resourcespersistentvolumeclaimsnamestatusconditionsnamereason">resources.persistentVolumeClaims.&lt;name&gt;.status.conditions.&lt;name&gt;.reason</a></h2>
+<p>reason is a unique, this should be a short, machine understandable string that gives the reason for condition’s last transition. If it reports “Resizing” that means the underlying persistent volume is being resized.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamestatusconditionsnamestatus"><a class="header" href="#resourcespersistentvolumeclaimsnamestatusconditionsnamestatus">resources.persistentVolumeClaims.&lt;name&gt;.status.conditions.&lt;name&gt;.status</a></h2>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamestatusconditionsnametype"><a class="header" href="#resourcespersistentvolumeclaimsnamestatusconditionsnametype">resources.persistentVolumeClaims.&lt;name&gt;.status.conditions.&lt;name&gt;.type</a></h2>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamestatuscurrentvolumeattributesclassname"><a class="header" href="#resourcespersistentvolumeclaimsnamestatuscurrentvolumeattributesclassname">resources.persistentVolumeClaims.&lt;name&gt;.status.currentVolumeAttributesClassName</a></h2>
+<p>currentVolumeAttributesClassName is the current name of the VolumeAttributesClass the PVC is using. When unset, there is no VolumeAttributeClass applied to this PersistentVolumeClaim This is an alpha field and requires enabling VolumeAttributesClass feature.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamestatusmodifyvolumestatus"><a class="header" href="#resourcespersistentvolumeclaimsnamestatusmodifyvolumestatus">resources.persistentVolumeClaims.&lt;name&gt;.status.modifyVolumeStatus</a></h2>
+<p>ModifyVolumeStatus represents the status object of ControllerModifyVolume operation. When this is unset, there is no ModifyVolume operation being attempted. This is an alpha field and requires enabling VolumeAttributesClass feature.</p>
+<p><em>Type:</em>
+null or (submodule)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamestatusmodifyvolumestatusstatus"><a class="header" href="#resourcespersistentvolumeclaimsnamestatusmodifyvolumestatusstatus">resources.persistentVolumeClaims.&lt;name&gt;.status.modifyVolumeStatus.status</a></h2>
+<p>status is the status of the ControllerModifyVolume operation. It can be in any of following states:</p>
+<ul>
+<li>Pending
+Pending indicates that the PersistentVolumeClaim cannot be modified due to unmet requirements, such as
+the specified VolumeAttributesClass not existing.</li>
+<li>InProgress
+InProgress indicates that the volume is being modified.</li>
+<li>Infeasible
+Infeasible indicates that the request has been rejected as invalid by the CSI driver. To
+resolve the error, a valid VolumeAttributesClass needs to be specified.
+Note: New statuses can be added in the future. Consumers should check for unknown statuses and fail appropriately.</li>
+</ul>
+<p><em>Type:</em>
+string</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamestatusmodifyvolumestatustargetvolumeattributesclassname"><a class="header" href="#resourcespersistentvolumeclaimsnamestatusmodifyvolumestatustargetvolumeattributesclassname">resources.persistentVolumeClaims.&lt;name&gt;.status.modifyVolumeStatus.targetVolumeAttributesClassName</a></h2>
+<p>targetVolumeAttributesClassName is the name of the VolumeAttributesClass the PVC currently being reconciled</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+<h2 id="resourcespersistentvolumeclaimsnamestatusphase"><a class="header" href="#resourcespersistentvolumeclaimsnamestatusphase">resources.persistentVolumeClaims.&lt;name&gt;.status.phase</a></h2>
+<p>phase represents the current phase of PersistentVolumeClaim.</p>
+<p><em>Type:</em>
+null or (string)</p>
+<p><em>Declared by:</em></p>
+<ul>
+<li><a href="file:///nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix">/nix/store/5hgv1ls2zaik7h2m0qpm3fj0v71f58h3-source/helm/generated/v1.30.nix</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../helm/nodes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../helm/persistentVolumes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../helm/nodes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../helm/persistentVolumes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
