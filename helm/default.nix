@@ -48,9 +48,16 @@
           echo "KUBECONFIG=$KUBECONFIG" >> $GITHUB_ENV
           echo "PRJ_ROOT=$PRJ_ROOT" >> $GITHUB_ENV
         fi
+        export PATH=$PATH:${pkgs.kubectl}/bin
 
         ${lib.getExe pkgs.kind} create cluster --kubeconfig $KUBECONFIG --config=${./kind.yaml}
-        ${lib.getExe pkgs.kubectl} apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+        kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+        sleep 10
+        echo Waiting for nginx to be ready
+        kubectl wait --namespace ingress-nginx \
+          --for=condition=ready pod \
+          --selector=app.kubernetes.io/component=controller \
+          --timeout=90s
       '';
 
       legacyPackages.helm = {
