@@ -73,13 +73,13 @@ in
 {
   options.ci.github = {
     name = lib.mkOption {
-      type = types.string;
+      type = types.str;
       description = "Name of Github Action";
       example = lib.literalExpression "my-awesome-deployment";
     };
 
     deploymentAttrPath = lib.mkOption {
-      type = types.string;
+      type = types.str;
       description = "Attribute path to the deployment";
       example = lib.literalExpression "my-awesome-deployment";
     };
@@ -115,7 +115,7 @@ in
     };
 
     outputPath = lib.mkOption {
-      type = types.string;
+      type = types.str;
       description = "Github Action output path";
       default = "$PRJ_ROOT/.github/workflows/${config.ci.github.name}.yaml";
       defaultText = lib.literalExpression "$PRJ_ROOT/.github/workflows/\${config.ci.github.name}.yaml";
