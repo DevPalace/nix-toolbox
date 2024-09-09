@@ -44,10 +44,7 @@
       apps.createK8sCluster.program = pkgs.writers.writeBashBin "create-kind-cluster" ''
         export PRJ_ROOT="$(git rev-parse --show-toplevel)"
         source $PRJ_ROOT/.envrc
-        if [[ -z "''${GITHUB_ENV}" ]]; then
-          echo AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-          echo AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-          echo AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        if [[ -n "''${GITHUB_ENV}" ]]; then
           echo "KUBECONFIG=$KUBECONFIG" >> $GITHUB_ENV
           echo "PRJ_ROOT=$PRJ_ROOT" >> $GITHUB_ENV
         fi
