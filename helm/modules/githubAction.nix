@@ -61,9 +61,12 @@ let
         ++ [
           {
             name = "🚀 Deploy";
-            run = ''
-              echo "yes" | nix run .#${cfg.deploymentAttrPath}.''${{inputs.target}}.''${{inputs.action}}
-            '';
+            uses = "./ci/helm";
+            "with" = {
+              inherit (cfg) deploymentAttrPath;
+              target = "\${{inputs.target}}";
+              action = "\${{inputs.action}}";
+            };
           }
         ];
     };

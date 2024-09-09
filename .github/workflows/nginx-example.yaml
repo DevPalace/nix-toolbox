@@ -10,9 +10,11 @@ jobs:
     - name: Start k8s cluster
       run: nix run .#createK8sCluster
     - name: 🚀 Deploy
-      run: 'echo "yes" | nix run .#helm.examples.nginx.${{inputs.target}}.${{inputs.action}}
-
-        '
+      uses: ./ci/helm
+      with:
+        action: ${{inputs.action}}
+        deploymentAttrPath: helm.examples.nginx
+        target: ${{inputs.target}}
 name: nginx-example
 'on':
   workflow_call:

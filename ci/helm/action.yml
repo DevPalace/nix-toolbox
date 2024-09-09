@@ -1,0 +1,22 @@
+name: "nix-toolbox/helm"
+description: "nix-toolbox/helm integration with Github Actions"
+author: "Gytis Ivaškevičius"
+
+branding:
+  icon: "truck"
+  color: "orange"
+
+inputs:
+  deploymentAttrPath:
+    description: Attribute path to the deployment
+    required: true
+  target:
+    description: Target name on which action will be performed
+    required: true
+  action:
+    description: Action which will be performed on target
+    required: true
+
+runs:
+  using: node20
+  main: dist/index.js
