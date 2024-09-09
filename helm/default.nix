@@ -46,6 +46,7 @@
         source $PRJ_ROOT/.envrc
         if [[ -z "''${GITHUB_ENV}" ]]; then
           echo "KUBECONFIG=$KUBECONFIG" >> $GITHUB_ENV
+          echo "PRJ_ROOT=$PRJ_ROOT" >> $GITHUB_ENV
         fi
 
         ${lib.getExe pkgs.kind} create cluster --kubeconfig $KUBECONFIG --config=${./kind.yaml}
