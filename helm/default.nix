@@ -42,6 +42,12 @@
       '';
 
       apps.createK8sCluster.program = pkgs.writers.writeBashBin "create-kind-cluster" ''
+        export PRJ_ROOT="$(git rev-parse --show-toplevel)"
+        source $PRJ_ROOT/.envrc
+        if [[ -z "''${GITHUB_ENV}" ]]; then
+          echo "KUBECONFIG=$KUBECONFIG" >> $GITHUB_ENV
+        fi
+
         ${lib.getExe pkgs.kind} create cluster --kubeconfig $KUBECONFIG --config=${./kind.yaml}
         ${lib.getExe pkgs.kubectl} apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
       '';

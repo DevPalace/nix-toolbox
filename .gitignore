@@ -2,3 +2,5 @@ result*
 docs/book
 docs/src
 .kubeconfig
+node_modules
+

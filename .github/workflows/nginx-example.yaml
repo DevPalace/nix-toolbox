@@ -1,0 +1,42 @@
+jobs:
+  deploy:
+    environment: ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: 📥 Checkout repository
+      uses: actions/checkout@v3
+    - name: 🧰 Setup Nix
+      uses: nixbuild/nix-quick-install-action@v28
+    - name: Start k8s cluster
+      run: nix run .#createK8sCluster
+    - name: 🚀 Deploy
+      run: 'echo "yes" | nix run .#helm.examples.nginx.${{inputs.target}}.${{inputs.action}}
+
+        '
+name: nginx-example
+'on':
+  workflow_call:
+    inputs:
+      action:
+        required: true
+        type: string
+      target:
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      action:
+        description: Action
+        options:
+        - apply
+        - destroy
+        - plan
+        required: true
+        type: choice
+      target:
+        description: Targets
+        options:
+        - dev
+        - prod
+        required: true
+        type: choice
