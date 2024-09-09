@@ -42,7 +42,7 @@ let
             lib.mapAttrsToList (name: value: ''
               echo -e "\n\n\e[1m—————————————————————————————————————————————————————————\e[0m"
               echo -e "\e[1mExecuting ${scriptKey} on '\e[34m${name}\e[0m\e[1m':\e[0m\n"
-              ${value.${scriptKey}}/bin/${value.${scriptKey}.meta.mainProgram}
+              ${value.${scriptKey}}/bin/${value.${scriptKey}.meta.mainProgram} "$@"
             '') (lib.mapAttrs chartConstructor targets)
           )
         );

@@ -241,16 +241,20 @@ in
           ];
 
           bashConfirmationDialog = successCmd: cancelMsg: ''
-            echo -e "\n\n\e[1mDo you wish to apply these changes to '\e[34m${config.targetName}\e[0m\e[1m'?\e[0m"
-            echo -e "  Only 'yes' will be accepted to approve.\n"
-            read -p $'\e[1m  Enter a value: \e[0m' choice
-            case "$choice" in
-              yes )
-                echo
-                ${helm} ${successCmd}
-              ;;
-              * ) echo -e '\n${cancelMsg}'; exit 1;;
-            esac
+            if [[ $* == *--yes* ]]; then
+              ${helm} ${successCmd}
+            else
+              echo -e "\n\n\e[1mDo you wish to apply these changes to '\e[34m${config.targetName}\e[0m\e[1m'?\e[0m"
+              echo -e "  Only 'yes' will be accepted to approve.\n"
+              read -p $'\e[1m  Enter a value: \e[0m' choice
+              case "$choice" in
+                yes )
+                  echo
+                  ${helm} ${successCmd}
+                ;;
+                * ) echo -e '\n${cancelMsg}'; exit 1;;
+              esac
+            fi
           '';
 
           # Helm Commands
