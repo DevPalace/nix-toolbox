@@ -13,12 +13,6 @@
         lib ? pkgs.lib,
       }:
       import ./lib { inherit pkgs lib; };
-    mkHelmGithubAction =
-      {
-        pkgs,
-        lib ? pkgs.lib,
-      }:
-      import ./lib/mkHelmGithubAction.nix { inherit pkgs lib; };
   };
 
   perSystem =

@@ -26,7 +26,9 @@ let
             specialArgs = {
               inherit pkgs;
               self = result;
-              ci.mkHelmGithubAction = pkgs.callPackage ./mkHelmGithubAction.nix { };
+              modules = {
+                githubAction = ../modules/githubAction.nix;
+              };
             };
           };
         in

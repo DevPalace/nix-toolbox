@@ -17,6 +17,7 @@ mkHelm {
     # Import resources to be deployed, alternativelly everything can be defined in the same file
     imports = [
       ./resources.nix
+      ./ci.nix
     ];
 
     kustomization = {
