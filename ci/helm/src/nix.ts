@@ -24,10 +24,12 @@ const spawnPromise = (cmd: string, args: ReadonlyArray<string>) =>
 
     cp.stdout.on("data", (data) => {
       stdout.push(data.toString());
+      console.log(data.toString());
     });
 
     cp.on("error", (e) => {
       error.push(e.toString());
+      console.log(e.toString());
     });
 
     cp.on("close", () => {
