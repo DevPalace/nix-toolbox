@@ -29230,11 +29230,10 @@ async function run(args) {
     try {
         const commentMarker = `<!-- nix-toolbox-helm-diff ${args.deploymentAttrPath} -->`;
         const targetsToDiff = args.targetsToDiff.split(",");
-        const targetsDiff = targetsToDiff.map((it) => nix.runAction(args.deploymentAttrPath, it, "plan"));
         const context = github.context;
         const pr = context.payload.pull_request;
         if (pr) {
-            console.log("PR:", pr);
+            const targetsDiff = targetsToDiff.map((it) => nix.runAction(args.deploymentAttrPath, it, "plan"));
             const prNumber = pr?.number ?? 0;
             const octokit = github.getOctokit(core.getInput("GITHUB_TOKEN"));
             const comments = await octokit.rest.issues.listComments({
