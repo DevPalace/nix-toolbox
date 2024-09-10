@@ -34,11 +34,12 @@ let
       workflow_call.inputs = {
         target = {
           type = "string";
-          required = true;
         };
         action = {
           type = "string";
-          required = true;
+        };
+        targetsToDiff = {
+          type = "string";
         };
       };
     };
@@ -66,6 +67,7 @@ let
               inherit (cfg) deploymentAttrPath;
               target = "\${{inputs.target}}";
               action = "\${{inputs.action}}";
+              targetsToDiff = lib.concatStringsSep "," cfg.targetsToDiff;
             };
           }
         ];
@@ -85,6 +87,12 @@ in
       type = types.str;
       description = "Attribute path to the deployment";
       example = lib.literalExpression "my-awesome-deployment";
+    };
+
+    targetsToDiff = lib.mkOption {
+      type = types.listOf types.str;
+      description = "List of target names to post diff on pull requests";
+      example = lib.literalExpression "[\"target-name-1\" \"target-name-2\"]";
     };
 
     extraSteps = lib.mkOption {

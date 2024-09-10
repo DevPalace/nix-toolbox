@@ -7,15 +7,20 @@ branding:
   color: "orange"
 
 inputs:
+  github_token:
+    description: Token to be used for posting PR diff comments
+    default: ${{ github.token }}
+    required: false
   deploymentAttrPath:
     description: Attribute path to the deployment
     required: true
   target:
     description: Target name on which action will be performed
-    required: true
   action:
     description: Action which will be performed on target
-    required: true
+  targetsToDiff:
+    description: Comma seperated list of targets to diff and post a PR comment
+    default: ""
 
 runs:
   using: node20

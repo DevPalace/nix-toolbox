@@ -15,15 +15,17 @@ jobs:
         action: ${{inputs.action}}
         deploymentAttrPath: helm.examples.nginx
         target: ${{inputs.target}}
+        targetsToDiff: dev,prod
 name: nginx-example
 'on':
+  pull_request: null
   workflow_call:
     inputs:
       action:
-        required: true
         type: string
       target:
-        required: true
+        type: string
+      targetsToDiff:
         type: string
   workflow_dispatch:
     inputs:
@@ -42,3 +44,6 @@ name: nginx-example
         - prod
         required: true
         type: choice
+permissions:
+  contents: read
+  pull-requests: write
