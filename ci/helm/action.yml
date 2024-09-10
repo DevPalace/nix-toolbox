@@ -1,0 +1,27 @@
+name: "nix-toolbox/helm"
+description: "nix-toolbox/helm integration with Github Actions"
+author: "Gytis Ivaškevičius"
+
+branding:
+  icon: "truck"
+  color: "orange"
+
+inputs:
+  github_token:
+    description: Token to be used for posting PR diff comments
+    default: ${{ github.token }}
+    required: false
+  deploymentAttrPath:
+    description: Attribute path to the deployment
+    required: true
+  target:
+    description: Target name on which action will be performed
+  action:
+    description: Action which will be performed on target
+  targetsToDiff:
+    description: Comma seperated list of targets to diff and post a PR comment
+    default: ""
+
+runs:
+  using: node20
+  main: dist/index.js
