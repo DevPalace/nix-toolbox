@@ -20,6 +20,7 @@ export async function run(args: {
     const context = github.context;
     const pr = context.payload.pull_request;
     if (pr) {
+      console.log("PR:", pr);
       const prNumber = pr?.number ?? 0;
       const octokit = github.getOctokit(core.getInput("GITHUB_TOKEN"));
 
