@@ -62,6 +62,7 @@
 
       legacyPackages.helm = {
         inherit (docs) k8sResourceDocs wrapperDocs k8sResourceDocsAll;
+        mkHelm = self.blueprints.mkHelm { inherit pkgs; };
         examples.nginx = import ./examples/nginx {
           inherit pkgs;
           nix-toolbox = self;
