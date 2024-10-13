@@ -27,7 +27,7 @@ curl localhost # Should result in nginx homepage
 ## CI
 This is an example how to autogenerate Github Action for EKS:
 ```nix
-{ modules, config, ...}: {
+{ lib, modules, config, ...}: {
 
   imports = [
     modules.githubAction
