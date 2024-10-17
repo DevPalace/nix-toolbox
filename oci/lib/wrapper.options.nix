@@ -139,8 +139,9 @@ in
     };
 
     entrypoint = mkOption {
-      type = listOf (either str package);
+      type = either (either str package) (listOf (either str package));
       default = [ ];
+      apply = it: if lib.isList it then it else [it];
       description = ''
         A list of arguments to use as the command to execute when the container starts.
       '';
