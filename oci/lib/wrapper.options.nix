@@ -207,7 +207,7 @@ in
         in
         layers: lib.foldl mergeToLayer [ ] layers;
 
-      tags = builtins.toFile "${config.name}-tags" (
+      tags = builtins.toFile (lib.strings.sanitizeDerivationName "${config.name}-tags") (
         builtins.unsafeDiscardStringContext (builtins.concatStringsSep "\n" ([ config.tag ] ++ config.tags))
       );
 
