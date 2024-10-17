@@ -37,18 +37,18 @@ let
         sed --regexp-extended 's|/nix/store/(.{36})-|/nix/store/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-|g' -i $out/result
         cp $out/result result
 
-        diff ${compareWith} $out/result || ret=$?
-        if [ $ret -ne 0 ];
-        then
-          echo -e "\e[33mActual output:\e[0m\n"
-          cat $out/result
-          echo
-          echo -e "\e[31mError: test failed\e[0m\n"
-          exit $ret
-        else
-          echo -e "\n\e[32mTest passed\e[0m"
-        fi
-      '';
+      diff ${compareWith} $out/result || ret=$?
+      if [ $ret -ne 0 ];
+      then
+        echo -e "\e[33mActual output:\e[0m\n"
+        cat $out/result
+        echo
+        echo -e "\e[31mError: test failed\e[0m\n"
+        exit $ret
+      else
+        echo -e "\n\e[32mTest passed\e[0m"
+      fi
+    '';
 in
 {
   empty = diffLayersJson "empty" (builder {

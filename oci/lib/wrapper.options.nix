@@ -232,6 +232,7 @@ in
           done
         }
       '';
+      img = builtins.unsafeDiscardStringContext "${config.name}:${config.tag}";
     in
     {
       tag = config.drv.imageTag;
@@ -269,6 +270,24 @@ in
           // (lib.optionalAttrs (config.labels != { }) { Labels = config.labels; })
           // (lib.optionalAttrs (config.stopSignal != null) { StopSignal = config.stopSignal; });
       };
+
+      actions.runBash = ''
+            ${copyFn}
+            if command -v podman &> /dev/null; then
+               echo "Podman detected: copy to local podman"
+               copy containers-storage:${config.name} "$@"
+            fi
+            if command -v docker &> /dev/null; then
+               echo "Docker detected: copy to local docker"
+               copy docker-daemon:${config.name} "$@"
+            fi
+        if command -v podman &> /dev/null; then
+           podman run --rm -it --entrypoint bash ${img}
+        fi
+        if command -v docker &> /dev/null; then
+           docker run --rm -it --entrypoint bash ${img}
+        fi
+      '';
 
       actions.print-image = ''
         echo
