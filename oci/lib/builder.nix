@@ -17,6 +17,9 @@ let
     ];
     specialArgs = {
       inherit pkgs n2c;
+      modules = {
+        cacerts = ../modules/cacert.nix;
+      };
     };
   };
 in
