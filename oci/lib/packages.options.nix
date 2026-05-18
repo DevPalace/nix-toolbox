@@ -1,6 +1,5 @@
 {
   pkgs,
-  n2c,
   config,
   lib,
   ...
@@ -10,25 +9,10 @@ let
   inherit (lib)
     mkOption
     types
-    literalExample
-    concatMapStringsSep
-    escapeShellArgs
-    filter
-    attrValues
-    literalExpression
     mkIf
-    mkDerivedConfig
-    mkDefault
     ;
   inherit (lib.types)
-    str
-    nullOr
-    attrs
-    attrsOf
     listOf
-    bool
-    either
-    int
     package
     ;
 in

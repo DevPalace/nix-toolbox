@@ -8,12 +8,12 @@ cp $__commandStatusPath $out/bin/status.sh
 chmod +x $out/bin/*
 
 if [[ ! -z "${valuesPath-}" ]]; then
-    cat $valuesPath | gojsontoyaml > $out/values.yaml
+    < "${valuesPath}" gojsontoyaml > $out/values.yaml
 fi
 
-cat $chartPath | gojsontoyaml > $out/Chart.yaml
+< "${chartPath}" gojsontoyaml > $out/Chart.yaml
 if [[ ! -z "${kustomization-}" ]]; then
-  echo $kustomization | gojsontoyaml > $out/kustomization.yaml
+  gojsontoyaml > $out/kustomization.yaml <<< "$kustomization"
 fi
 
 for file in $attrTemplates; do

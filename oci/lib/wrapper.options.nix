@@ -237,7 +237,8 @@ in
       tag = config.drv.imageTag;
       passthru = {
         imageRefUnsafe = builtins.unsafeDiscardStringContext "${config.name}:${config.tag}";
-      } // (lib.mapAttrs (n: pkgs.writeShellScriptBin n) config.actions);
+      }
+      // (lib.mapAttrs (n: pkgs.writeShellScriptBin n) config.actions);
 
       drv = n2c.nix2container.buildImage {
         inherit (config)
@@ -254,20 +255,19 @@ in
 
         layers = foldImageLayers config.layers;
 
-        config =
-          {
-            WorkingDir = config.workingDir;
-          }
-          // (lib.optionalAttrs (config.user != null) { User = config.user; })
-          // (lib.optionalAttrs (config.exposedPorts != { }) { ExposedPorts = config.exposedPorts; })
-          // (lib.optionalAttrs (config.env != { }) {
-            Env = lib.mapAttrsToList (n: v: "${n}=${v}") config.env;
-          })
-          // (lib.optionalAttrs (config.entrypoint != [ ]) { Entrypoint = config.entrypoint; })
-          // (lib.optionalAttrs (config.cmd != [ ]) { Cmd = config.cmd; })
-          // (lib.optionalAttrs (config.volumes != { }) { Volumes = config.volumes; })
-          // (lib.optionalAttrs (config.labels != { }) { Labels = config.labels; })
-          // (lib.optionalAttrs (config.stopSignal != null) { StopSignal = config.stopSignal; });
+        config = {
+          WorkingDir = config.workingDir;
+        }
+        // (lib.optionalAttrs (config.user != null) { User = config.user; })
+        // (lib.optionalAttrs (config.exposedPorts != { }) { ExposedPorts = config.exposedPorts; })
+        // (lib.optionalAttrs (config.env != { }) {
+          Env = lib.mapAttrsToList (n: v: "${n}=${v}") config.env;
+        })
+        // (lib.optionalAttrs (config.entrypoint != [ ]) { Entrypoint = config.entrypoint; })
+        // (lib.optionalAttrs (config.cmd != [ ]) { Cmd = config.cmd; })
+        // (lib.optionalAttrs (config.volumes != { }) { Volumes = config.volumes; })
+        // (lib.optionalAttrs (config.labels != { }) { Labels = config.labels; })
+        // (lib.optionalAttrs (config.stopSignal != null) { StopSignal = config.stopSignal; });
       };
 
       actions.print-image = ''

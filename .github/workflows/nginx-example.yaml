@@ -4,9 +4,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: 📥 Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: 🧰 Setup Nix
-      uses: nixbuild/nix-quick-install-action@v28
+      uses: nixbuild/nix-quick-install-action@v30
     - name: Start k8s cluster
       run: nix run .#createK8sCluster
     - name: 🚀 Deploy

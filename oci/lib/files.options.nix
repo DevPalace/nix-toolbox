@@ -1,6 +1,5 @@
 {
   pkgs,
-  n2c,
   config,
   lib,
   ...
@@ -345,9 +344,7 @@ in
               echo "duplicate entry $target -> $src"
               if [ "$(readlink "$out/$target")" != "$src" ]; then
                 echo "mismatched duplicate entry $(readlink "$out/$target") <-> $src"
-                ret=1
-
-                continue
+                return 1
               fi
             fi
           fi

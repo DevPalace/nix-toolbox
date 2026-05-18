@@ -46,26 +46,25 @@ let
     jobs.deploy = {
       environment = "\${{ inputs.environment }}";
       runs-on = "ubuntu-latest";
-      steps =
-        [
-          {
-            name = "📥 Checkout repository";
-            uses = "actions/checkout@v3";
-          }
-          {
-            name = "🧰 Setup Nix";
-            uses = "nixbuild/nix-quick-install-action@v28";
-          }
-        ]
-        ++ cfg.extraSteps
-        ++ [
-          {
-            name = "🚀 Deploy";
-            run = ''
-              echo "yes" | nix run .#${cfg.deploymentAttrPath}.''${{inputs.target}}.''${{inputs.action}}
-            '';
-          }
-        ];
+      steps = [
+        {
+          name = "📥 Checkout repository";
+          uses = "actions/checkout@v3";
+        }
+        {
+          name = "🧰 Setup Nix";
+          uses = "nixbuild/nix-quick-install-action@v28";
+        }
+      ]
+      ++ cfg.extraSteps
+      ++ [
+        {
+          name = "🚀 Deploy";
+          run = ''
+            echo "yes" | nix run .#${cfg.deploymentAttrPath}.''${{inputs.target}}.''${{inputs.action}}
+          '';
+        }
+      ];
     };
   } cfg.extraDefinitions;
   yaml = pkgs.writers.writeYAML "github-action" job;
