@@ -10,7 +10,6 @@ let
     attrNames
     mkOption
     types
-    literalExample
     concatMapStringsSep
     escapeShellArgs
     filter
@@ -59,7 +58,7 @@ in
       description = ''
         A list of file permisssions which are set when the tar layer is created: these permissions are not written to the Nix store.
       '';
-      example = literalExample ''
+      example = literalExpression ''
         {
           path = "a store path";
           regex = ".*";

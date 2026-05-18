@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (lib) mkOption types literalExample;
+  inherit (lib) mkOption types literalExpression;
   inherit (lib.types)
     str
     nullOr
@@ -125,7 +125,7 @@ in
       description = ''
         A set of ports to expose from a container running this image.
       '';
-      example = literalExample ''
+      example = literalExpression ''
         { "8080/tcp" = {}; };
       '';
     };

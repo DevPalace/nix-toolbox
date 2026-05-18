@@ -49,11 +49,11 @@ let
       steps = [
         {
           name = "📥 Checkout repository";
-          uses = "actions/checkout@v3";
+          uses = "actions/checkout@v4";
         }
         {
           name = "🧰 Setup Nix";
-          uses = "nixbuild/nix-quick-install-action@v28";
+          uses = "nixbuild/nix-quick-install-action@v30";
         }
       ]
       ++ cfg.extraSteps
