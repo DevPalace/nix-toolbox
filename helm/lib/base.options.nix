@@ -313,7 +313,6 @@ in
               __commandStatus
               ;
             chartPath = config.chart;
-            #chart = if chart == null then null else builtins.toJSON chart;
             values = builtins.toJSON config.values;
 
             passAsFile = [
@@ -322,7 +321,8 @@ in
               "__commandPlan"
               "__commandStatus"
               "values"
-            ] ++ builtins.attrNames attrTemplates;
+            ]
+            ++ builtins.attrNames attrTemplates;
             attrTemplates = builtins.attrNames attrTemplates;
             fileTemplates = builtins.attrNames fileTemplates;
             copyToRoot = builtins.attrNames copyToRootVars;

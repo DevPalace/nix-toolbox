@@ -1,0 +1,26 @@
+name: Check
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  format:
+    name: Format
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: nixbuild/nix-quick-install-action@v30
+      - run: nix run nixpkgs#nixfmt -- --check $(find . -name '*.nix' -type f -not -path './helm/generated/*')
+
+  checks-core:
+    name: OCI Checks (no Docker)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: nixbuild/nix-quick-install-action@v30
+      # Run non-Docker OCI checks explicitly. The usersAndPerms check needs Docker
+      # and can be tested locally or on a self-hosted runner with Docker access.
+      - run: nix build .#checks.x86_64-linux.empty .#checks.x86_64-linux.config

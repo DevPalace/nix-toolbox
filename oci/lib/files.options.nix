@@ -1,6 +1,5 @@
 {
   pkgs,
-  n2c,
   config,
   lib,
   ...
@@ -11,7 +10,6 @@ let
     attrNames
     mkOption
     types
-    literalExample
     concatMapStringsSep
     escapeShellArgs
     filter
@@ -60,7 +58,7 @@ in
       description = ''
         A list of file permisssions which are set when the tar layer is created: these permissions are not written to the Nix store.
       '';
-      example = literalExample ''
+      example = literalExpression ''
         {
           path = "a store path";
           regex = ".*";
@@ -345,9 +343,7 @@ in
               echo "duplicate entry $target -> $src"
               if [ "$(readlink "$out/$target")" != "$src" ]; then
                 echo "mismatched duplicate entry $(readlink "$out/$target") <-> $src"
-                ret=1
-
-                continue
+                return 1
               fi
             fi
           fi
