@@ -23,5 +23,6 @@
     "StopSignal": "5"
   },
   "layers": null,
-  "arch": "amd64"
+  "arch": "amd64",
+  "created": "0001-01-01T00:00:00Z"
 }
