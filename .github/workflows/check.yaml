@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: nixbuild/nix-quick-install-action@v30
-      - run: nix run .#formatter -- --check $(find . -name '*.nix' -type f)
+      - run: nix run nixpkgs#nixfmt -- --check $(find . -name '*.nix' -type f -not -path './helm/generated/*')
 
   checks-core:
     name: OCI Checks (no Docker)
