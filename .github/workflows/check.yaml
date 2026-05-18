@@ -8,17 +8,19 @@ on:
 
 jobs:
   format:
-    name: Format (nixfmt-rfc-style)
+    name: Format
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: nixbuild/nix-quick-install-action@v30
       - run: nix fmt --check || find . -name '*.nix' -exec nixfmt --check {} +
 
-  tests:
-    name: OCI Tests
+  checks-core:
+    name: OCI Checks (no Docker)
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: nixbuild/nix-quick-install-action@v30
-      - run: nix flake check
+      # Run non-Docker OCI checks explicitly. The usersAndPerms check needs Docker
+      # and can be tested locally or on a self-hosted runner with Docker access.
+      - run: nix build .#checks.x86_64-linux.empty .#checks.x86_64-linux.config
